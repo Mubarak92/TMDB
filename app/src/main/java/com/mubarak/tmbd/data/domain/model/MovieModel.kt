@@ -1,13 +1,5 @@
 package com.mubarak.tmbd.data.domain.model
 
-data class MovieModel(
-    val page: Int? = null,
-    val totalPages: Int? = null,
-    val results: List<MovieItem>? = null,
-    val totalResults: Int? = null
-)
-
-
 data class MovieItem(
     val overview: String? = null,
     val originalLanguage: String? = null,

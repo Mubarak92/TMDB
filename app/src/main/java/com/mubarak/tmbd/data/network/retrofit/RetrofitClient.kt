@@ -9,8 +9,9 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitClient @Inject constructor(){
+class RetrofitClient @Inject constructor() {
     private val retrofit: Retrofit
+
     init {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -19,7 +20,7 @@ class RetrofitClient @Inject constructor(){
         val gson = GsonBuilder().setLenient().serializeNulls().create()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl("https://api.themoviedb.org/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()
@@ -27,6 +28,6 @@ class RetrofitClient @Inject constructor(){
 
 
     fun <S> getService(service: Class<S>): S {
-       return retrofit.create(service)
+        return retrofit.create(service)
     }
 }

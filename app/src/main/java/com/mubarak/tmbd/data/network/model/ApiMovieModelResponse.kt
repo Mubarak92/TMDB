@@ -1,6 +1,9 @@
 package com.mubarak.tmbd.data.network.model
 
 import com.google.gson.annotations.SerializedName
+import com.mubarak.tmbd.data.domain.model.MovieItem
+import com.mubarak.tmbd.data.network.model.ApiMovieItem.Companion.toUiMovie
+import java.io.Serializable
 
 data class ApiMovieModelResponse(
     @SerializedName("page")
@@ -14,7 +17,13 @@ data class ApiMovieModelResponse(
 
     @SerializedName("total_results")
     val totalResults: Int? = null
-)
+) {
+    companion object {
+        fun ApiMovieModelResponse?.toUiMovieList() = this?.results?.map {
+            it.toUiMovie()
+        }
+    }
+}
 
 
 data class ApiMovieItem(
@@ -60,4 +69,13 @@ data class ApiMovieItem(
 
     @SerializedName("vote_count")
     val voteCount: Int? = null
-)
+) : Serializable {
+    companion object {
+        fun ApiMovieItem?.toUiMovie() = MovieItem(
+            this?.overview,
+            this?.originalLanguage,
+            this?.originalTitle, this?.video,
+            this?.title, this?.genreIds, this?.posterPath, this?.backdropPath, this?.releaseDate
+        )
+    }
+}
