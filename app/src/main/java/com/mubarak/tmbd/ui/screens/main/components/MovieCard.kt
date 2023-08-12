@@ -11,13 +11,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.mubarak.tmbd.R
+import com.mubarak.tmbd.data.network.Constant.BASE_POSTER_URL
 
 @Composable
 fun MovieCard(
-    posterPath : String = "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" ,
+    posterPath: String?,
     modifier: Modifier = Modifier
         .fillMaxWidth()
         .height(160.dp)
@@ -26,21 +28,14 @@ fun MovieCard(
 
         Box(contentAlignment = Alignment.TopEnd) {
             Column(modifier = Modifier.fillMaxSize()) {
-                AsyncImage(modifier = modifier,
-                    model = "https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg", contentDescription = "poster")
+                AsyncImage(
+                    modifier = modifier,
+                    model = BASE_POSTER_URL + posterPath,
+                    contentDescription = "poster",
+                    placeholder = painterResource(id = R.drawable.full_logo),
+                    error = painterResource(id = R.drawable.ic_broken_image)
+                )
             }
-//            AsyncImage(modifier = modifier,
-//                    model = apiMovieItem.posterPath, contentDescription = "poster")
-//            }
-
         }
-
     }
-
-}
-
-@Preview
-@Composable
-fun previewCard() {
-    MovieCard("https://image.tmdb.org/t/p/original/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg")
 }

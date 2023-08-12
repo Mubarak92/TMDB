@@ -1,5 +1,9 @@
 package com.mubarak.tmbd.data.domain.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MovieItem(
     val overview: String? = null,
     val originalLanguage: String? = null,
@@ -15,4 +19,4 @@ data class MovieItem(
     val id: Int? = null,
     val adult: Boolean? = null,
     val voteCount: Int? = null
-)
+): Parcelable

@@ -1,6 +1,7 @@
 package com.mubarak.tmbd.data.network.retrofit
 
 import com.google.gson.GsonBuilder
+import com.mubarak.tmbd.data.network.Constant.BASE_URL
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,7 +21,7 @@ class RetrofitClient @Inject constructor() {
         val gson = GsonBuilder().setLenient().serializeNulls().create()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .client(client)
             .build()

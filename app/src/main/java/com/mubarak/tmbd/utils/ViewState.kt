@@ -11,3 +11,8 @@ sealed class ViewState<T> {
         fun <T> error(error: kotlin.Error) = Error<T>(error)
     }
 }
+
+
+fun <T> Throwable.toViewState(): ViewState <T> {
+    return ViewState.Error(error("Error"))
+}

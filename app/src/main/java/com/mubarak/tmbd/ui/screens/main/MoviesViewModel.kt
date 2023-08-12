@@ -6,6 +6,7 @@ import com.mubarak.tmbd.data.domain.model.MovieItem
 import com.mubarak.tmbd.data.domain.repository.IMovieRepository
 import com.mubarak.tmbd.data.network.model.ApiMovieModelResponse.Companion.toUiMovieList
 import com.mubarak.tmbd.utils.ViewState
+import com.mubarak.tmbd.utils.toViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -33,8 +34,8 @@ class MoviesViewModel @Inject constructor(private val movieRepository: IMovieRep
         movieRepository.getMovies(1)
             .take(1)
             .map { it.toUiMovieList() }
-            .onEach { _viewState.emit(ViewState.success(it!!)) }
-            .catch { error("Erorr!") }
+            .onEach { _viewState.emit(ViewState.success(it.orEmpty())) }
+            .catch { _viewState.emit(it.toViewState())}
             .flowOn(Dispatchers.IO)
             .launchIn(viewModelScope)
     }

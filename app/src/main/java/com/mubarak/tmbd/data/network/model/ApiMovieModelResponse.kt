@@ -19,7 +19,7 @@ data class ApiMovieModelResponse(
     val totalResults: Int? = null
 ) {
     companion object {
-        fun ApiMovieModelResponse?.toUiMovieList() = this?.results?.map {
+        fun ApiMovieModelResponse.toUiMovieList() = this.results?.map {
             it.toUiMovie()
         }
     }
@@ -71,11 +71,16 @@ data class ApiMovieItem(
     val voteCount: Int? = null
 ) : Serializable {
     companion object {
-        fun ApiMovieItem?.toUiMovie() = MovieItem(
-            this?.overview,
-            this?.originalLanguage,
-            this?.originalTitle, this?.video,
-            this?.title, this?.genreIds, this?.posterPath, this?.backdropPath, this?.releaseDate
+        fun ApiMovieItem.toUiMovie() = MovieItem(
+            this.overview,
+            this.originalLanguage,
+            this.originalTitle,
+            this.video,
+            this.title,
+            this.genreIds,
+            this.posterPath,
+            this.backdropPath,
+            this.releaseDate
         )
     }
 }
