@@ -22,11 +22,11 @@ kotlin {
 
 
 android {
-    namespace = "com.mubarak.tmbd"
+    namespace = "com.mubarak.tmdb"
     compileSdk = (34)
 
     defaultConfig {
-        applicationId = "com.mubarak.tmbd"
+        applicationId = "com.mubarak.tmdb"
         minSdkVersion (23)
         targetSdkVersion (33)
         versionCode = 1

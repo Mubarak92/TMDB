@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "TMBD"
+rootProject.name = "TMDB"
 include(":app")
  
