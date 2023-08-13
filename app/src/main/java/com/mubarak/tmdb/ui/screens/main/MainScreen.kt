@@ -23,8 +23,6 @@ import com.mubarak.tmdb.utils.ViewState
 @Composable
 fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-    val x by lazy { 1 }
-    x
     when (val screenState = state) {
         is ViewState.Success -> {
             LazyVerticalGrid(columns = GridCells.Fixed(2),
