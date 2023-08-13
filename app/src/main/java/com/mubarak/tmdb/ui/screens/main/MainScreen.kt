@@ -2,6 +2,7 @@ package com.mubarak.tmdb.ui.screens.main
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -17,39 +18,52 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.data.domain.model.MovieItem
+import com.mubarak.tmdb.ui.screens.main.components.ExpandableSearchView
 import com.mubarak.tmdb.ui.screens.main.components.MovieCard
+import com.mubarak.tmdb.ui.screens.main.components.ScrollableTextTabComponent
 import com.mubarak.tmdb.utils.ViewState
 
 @Composable
 fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-    when (val screenState = state) {
-        is ViewState.Success -> {
-            LazyVerticalGrid(columns = GridCells.Fixed(2),
-                content = {
-                    items(screenState.data) { item: MovieItem ->
-                        MovieCard(posterPath = item.posterPath)
+
+    Column(Modifier.fillMaxSize()) {
+        ExpandableSearchView(
+            searchDisplay = "Search",
+            onSearchDisplayChanged = { "abc" },
+            onSearchDisplayClosed = { "123" })
+
+        ScrollableTextTabComponent()
+
+        when (val screenState = state) {
+            is ViewState.Success -> {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    content = {
+                        items(screenState.data) { item: MovieItem ->
+                            MovieCard(posterPath = item.posterPath, movieTitle = item.title)
+                        }
                     }
-                }
-            )
-        }
-
-        is ViewState.Error -> {
-            Snackbar(modifier = Modifier.padding(4.dp),
-                action = {
-                    Text(
-                        text = "Try again",
-                        modifier = Modifier.clickable {
-                            viewModel.getMovies()
-                        })
-                }) {
-                Text("an error occurred")
+                )
             }
-        }
 
-        is ViewState.Loading -> {
-            Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator()
+            is ViewState.Error -> {
+                Snackbar(modifier = Modifier.padding(4.dp),
+                    action = {
+                        Text(
+                            text = "Try again",
+                            modifier = Modifier.clickable {
+                                viewModel.getMovies()
+                            })
+                    }) {
+                    Text("an error occurred")
+                }
+            }
+
+            is ViewState.Loading -> {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    CircularProgressIndicator()
+                }
             }
         }
     }
