@@ -27,8 +27,8 @@ android {
 
     defaultConfig {
         applicationId = "com.mubarak.tmdb"
-        minSdkVersion (23)
-        targetSdkVersion (33)
+        minSdk = (23)
+        targetSdk = (33)
         versionCode = 1
         versionName = "1.0"
 
@@ -45,11 +45,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -57,7 +57,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -67,21 +67,21 @@ android {
 
 dependencies {
     implementation ("androidx.core:core-ktx:1.10.1")
-    implementation ("androidx.compose.ui:ui:1.4.3")
-    implementation ("androidx.compose.material:material:1.4.3")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.4.3")
+    implementation ("androidx.compose.ui:ui:1.5.0")
+    implementation ("androidx.compose.material:material:1.5.0")
+    implementation ("androidx.compose.ui:ui-tooling-preview:1.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation ("androidx.activity:activity-compose:1.7.1")
-    implementation ("com.google.firebase:firebase-analytics-ktx:21.2.2")
-    implementation ("com.google.firebase:firebase-crashlytics-ktx:18.3.7")
-    implementation ("com.google.firebase:firebase-messaging-ktx:23.1.2")
+    implementation ("androidx.activity:activity-compose:1.7.2")
+    implementation ("com.google.firebase:firebase-analytics-ktx:21.3.0")
+    implementation ("com.google.firebase:firebase-crashlytics-ktx:18.4.0")
+    implementation ("com.google.firebase:firebase-messaging-ktx:23.2.1")
     implementation ("androidx.work:work-runtime-ktx:2.8.1")
     testImplementation ("junit:junit:4.13.2")
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
     androidTestImplementation ("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.4.3")
-    debugImplementation ("androidx.compose.ui:ui-tooling:1.4.3")
-    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.4.3")
+    androidTestImplementation ("androidx.compose.ui:ui-test-junit4:1.5.0")
+    debugImplementation ("androidx.compose.ui:ui-tooling:1.5.0")
+    debugImplementation ("androidx.compose.ui:ui-test-manifest:1.5.0")
 
     //hilt
     implementation ("com.google.dagger:hilt-android:2.44.2")
@@ -94,17 +94,16 @@ dependencies {
 
     //material io
     implementation ("com.google.android.material:material:1.9.0")
-    implementation ("androidx.compose.material3:material3:1.1.0")
-    implementation ("androidx.compose.material3:material3-window-size-class:1.1.0")
+    implementation ("androidx.compose.material3:material3:1.1.1")
+    implementation ("androidx.compose.material3:material3-window-size-class:1.1.1")
 
     //splash
     implementation ("androidx.core:core-splashscreen:1.0.1")
 
     //Room
-    kapt ("androidx.room:room-compiler:2.5.1")
-    implementation ("androidx.room:room-ktx:2.5.1")
-    implementation ("androidx.room:room-runtime:2.5.1")
-
+    ksp ("androidx.room:room-compiler:2.5.2")
+    implementation ("androidx.room:room-ktx:2.5.2")
+    implementation ("androidx.room:room-runtime:2.5.2")
 
     // Lifecycle components
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
@@ -115,9 +114,9 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     // Kotlin components
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.20")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // Worker
     implementation ("androidx.work:work-runtime-ktx:2.8.1")
@@ -135,4 +134,7 @@ dependencies {
 
     //coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //ksp
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.11")
 }

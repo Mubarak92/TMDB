@@ -27,7 +27,7 @@ fun MovieCard(
             .background(Color.White)
             .padding(20.dp)
     ) {
-        Column(modifier = Modifier.height(300.dp).width(300.dp)) {
+        Column(modifier = Modifier.height(200.dp).width(300.dp)) {
             AsyncImage(
                 modifier = modifier,
                 model = BASE_POSTER_URL + posterPath,
