@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TMDB</string>
+
+    <string name="action">أكشن</string>
+    <string name="adventure">مغامرات</string>
+    <string name="animation">رسوم متحركة</string>
+    <string name="comedy">كوميديا</string>
+    <string name="crime">جريمة</string>
+    <string name="documentary">وثائقي</string>
+    <string name="drama">دراما</string>
+    <string name="family">عائلي</string>
+    <string name="fantasy">خيال</string>
+    <string name="history">تاريخ</string>
+    <string name="horror">رعب</string>
+    <string name="music">موسيقى</string>
+    <string name="mystery">غموض</string>
+    <string name="romance">رومانسي</string>
+    <string name="science_fiction">خيال علمي</string>
+    <string name="thriller">غموض</string>
+    <string name="war">حرب</string>
+</resources>

@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface IMovieRepository {
 
-    fun getMovies(pageNumber: Int): Flow<ApiMovieModelResponse>
+    fun getMovies(pageNumber: Int , genres: Int ): Flow<ApiMovieModelResponse>
 
 }

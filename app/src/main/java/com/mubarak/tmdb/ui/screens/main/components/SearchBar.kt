@@ -59,7 +59,6 @@ fun ExpandableSearchView(
             false -> CollapsedSearchView(
                 onExpandedChanged = onExpandedChanged,
                 modifier = modifier,
-                tint = tint
             )
         }
     }
@@ -77,9 +76,7 @@ fun SearchIcon(iconTint: Color) {
 @Composable
 fun CollapsedSearchView(
     onExpandedChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier,
-    tint: Color = MaterialTheme.colors.onPrimary,
-) {
+    modifier: Modifier = Modifier, ) {
 
     Row(
         modifier = modifier
@@ -131,7 +128,7 @@ fun ExpandedSearchView(
             onSearchDisplayClosed()
         }) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_search),
+                painter = painterResource(id = R.drawable.ic_arrow_back),
                 contentDescription = "back icon",
                 tint = Color.Black
             )

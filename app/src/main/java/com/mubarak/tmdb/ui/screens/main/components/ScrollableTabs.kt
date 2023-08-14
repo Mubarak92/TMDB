@@ -11,15 +11,39 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.mubarak.tmdb.R
+import com.mubarak.tmdb.ui.screens.main.MoviesViewModel
 
 @Composable
-fun ScrollableTextTabComponent() {
+fun ScrollableTextTabComponent(
+    viewModel: MoviesViewModel = hiltViewModel(),
+) {
     var selectedIndex by remember { mutableIntStateOf(0) }
 
     val list = listOf(
-        (ScrollableTabs("First", 1)), ScrollableTabs("Second", 2), ScrollableTabs("third", 3)
-    )
+        (ScrollableTabs(stringResource(id = R.string.action), 28)),
+        (ScrollableTabs(stringResource(id = R.string.adventure), 12)),
+        (ScrollableTabs(stringResource(id = R.string.animation), 16)),
+        (ScrollableTabs(stringResource(id = R.string.comedy), 35)),
+        (ScrollableTabs(stringResource(id = R.string.crime), 80)),
+        (ScrollableTabs(stringResource(id = R.string.documentary), 99)),
+        (ScrollableTabs(stringResource(id = R.string.drama), 18)),
+        (ScrollableTabs(stringResource(id = R.string.family), 10751)),
+        (ScrollableTabs(stringResource(id = R.string.fantasy), 14)),
+        (ScrollableTabs(stringResource(id = R.string.history), 36)),
+        (ScrollableTabs(stringResource(id = R.string.horror), 27)),
+        (ScrollableTabs(stringResource(id = R.string.music), 10402)),
+        (ScrollableTabs(stringResource(id = R.string.mystery), 9648)),
+        (ScrollableTabs(stringResource(id = R.string.romance), 10749)),
+        (ScrollableTabs(stringResource(id = R.string.science_fiction), 878)),
+        (ScrollableTabs(stringResource(id = R.string.thriller), 53)),
+        (ScrollableTabs(stringResource(id = R.string.war), 37)),
+
+        )
+
     ScrollableTabRow(
         modifier = Modifier
             .height(50.dp)
@@ -27,10 +51,12 @@ fun ScrollableTextTabComponent() {
         edgePadding = 8.dp,
         selectedTabIndex = selectedIndex
     ) {
-        list.forEachIndexed { index, text ->
+        list.forEachIndexed { index, movieItem ->
             Tab(selected = selectedIndex == index,
-                onClick = { selectedIndex = index },
-                text = { Text(text = text.name) }
+                onClick = { selectedIndex = index
+
+                    viewModel.getMovies(genres = movieItem.id)},
+                text = { Text(text = movieItem.name) }
             )
         }
     }

@@ -29,9 +29,9 @@ fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
 
     Column(Modifier.fillMaxSize()) {
         ExpandableSearchView(
-            searchDisplay = "Search",
-            onSearchDisplayChanged = { "abc" },
-            onSearchDisplayClosed = { "123" })
+            searchDisplay = "",
+            onSearchDisplayChanged = {  },
+            onSearchDisplayClosed = {  })
 
         ScrollableTextTabComponent()
 
@@ -53,7 +53,6 @@ fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
                         Text(
                             text = "Try again",
                             modifier = Modifier.clickable {
-                                viewModel.getMovies()
                             })
                     }) {
                     Text("an error occurred")

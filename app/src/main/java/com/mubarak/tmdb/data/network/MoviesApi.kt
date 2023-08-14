@@ -10,6 +10,7 @@ interface MoviesApi {
     @GET("3/movie/popular?language=en-US")
     suspend fun getPopularMovies(
         @Query("page_number") pageNumber: Int = 1,
-        @Query("api_key") apiKey: String = API_KEY
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("with_genres") genres: Int
     ): ApiMovieModelResponse
 }
