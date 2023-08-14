@@ -26,14 +26,27 @@ class MoviesViewModel @Inject constructor(private val movieRepository: IMovieRep
     val viewState = _viewState.asStateFlow()
 
     init {
-        getMovies(genres = 16)
+        getPopularMovies(genres = 16)
     }
 
-    fun getMovies(
+    fun getPopularMovies(
         pageNumber: Int = 1,
         genres: Int
     ) {
-        movieRepository.getMovies(pageNumber, genres)
+        movieRepository.getPopularMovies(pageNumber, genres)
+            .take(1)
+            .map { it.toUiMovieList() }
+            .onEach { _viewState.emit(ViewState.success(it.orEmpty())) }
+            .catch { _viewState.emit(it.toViewState()) }
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
+    }
+
+    fun getSearchedMovies(
+        pageNumber: Int = 1,
+        query: String?
+    ) {
+        movieRepository.getSearchedMovies(pageNumber, query)
             .take(1)
             .map { it.toUiMovieList() }
             .onEach { _viewState.emit(ViewState.success(it.orEmpty())) }

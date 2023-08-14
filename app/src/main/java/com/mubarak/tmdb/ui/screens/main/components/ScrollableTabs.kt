@@ -55,7 +55,7 @@ fun ScrollableTextTabComponent(
             Tab(selected = selectedIndex == index,
                 onClick = { selectedIndex = index
 
-                    viewModel.getMovies(genres = movieItem.id)},
+                    viewModel.getPopularMovies(genres = movieItem.id)},
                 text = { Text(text = movieItem.name) }
             )
         }

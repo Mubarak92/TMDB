@@ -4,5 +4,7 @@ import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse
 import kotlinx.coroutines.flow.Flow
 
 interface IMovieRemote {
-    fun getMovies(pageNumber: Int,genres:Int): Flow<ApiMovieModelResponse>
+    fun getPopularMovies(pageNumber: Int, genres:Int): Flow<ApiMovieModelResponse>
+    fun getSearchedMovies(pageNumber: Int, query:String?): Flow<ApiMovieModelResponse>
+
 }

@@ -10,7 +10,10 @@ import javax.inject.Singleton
 @Singleton
 class MovieRepositoryImpl @Inject constructor(private val movieRemote: IMovieRemote) : IMovieRepository {
 
+    override fun getPopularMovies(pageNumber: Int, genres: Int): Flow<ApiMovieModelResponse> =
+        movieRemote.getPopularMovies(pageNumber,genres)
 
-    override fun getMovies(pageNumber: Int, genres: Int): Flow<ApiMovieModelResponse> =
-        movieRemote.getMovies(pageNumber,genres)
+    override fun getSearchedMovies(pageNumber: Int, query: String?): Flow<ApiMovieModelResponse> =
+       movieRemote.getSearchedMovies(pageNumber,query)
+
 }

@@ -29,7 +29,9 @@ import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.mubarak.tmdb.R
+import com.mubarak.tmdb.ui.screens.main.MoviesViewModel
 
 @Composable
 fun ExpandableSearchView(
@@ -104,6 +106,7 @@ fun ExpandedSearchView(
     onSearchDisplayClosed: () -> Unit,
     onExpandedChanged: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
+    viewModel: MoviesViewModel = hiltViewModel(),
     tint: Color = MaterialTheme.colors.onPrimary,
 ) {
     val focusManager = LocalFocusManager.current
@@ -126,6 +129,7 @@ fun ExpandedSearchView(
         IconButton(onClick = {
             onExpandedChanged(false)
             onSearchDisplayClosed()
+            viewModel.getSearchedMovies(query = searchDisplay)
         }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_arrow_back),
