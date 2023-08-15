@@ -1,5 +1,6 @@
 package com.mubarak.tmdb.ui.screens.details
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import com.ramcosta.composedestinations.annotation.Destination
@@ -11,6 +12,9 @@ fun DetailsScreen(
     movieId:Int?,
     movieName:String?
 ) {
-
-    Text(text = movieName.toString())
+    Column {
+        
+        Text(text = movieName.toString())
+        Text(text = movieId.toString())
+    }
 }

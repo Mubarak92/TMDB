@@ -84,7 +84,12 @@ data class ApiMovieItem(
             this.genreIds,
             this.posterPath,
             this.backdropPath,
-            this.releaseDate
+            this.releaseDate,
+            this.popularity,
+            this.voteAverage,
+            this.id,
+            this.adult,
+            this.voteCount
         )
     }
 }

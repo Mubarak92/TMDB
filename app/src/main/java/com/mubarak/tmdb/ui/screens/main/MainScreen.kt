@@ -49,7 +49,7 @@ fun MainScreen(
                         items(screenState.data) { item: MovieItem ->
                             MovieCard(
                                 modifier = Modifier.clickable {
-                                    navigator.navigate(DetailsScreenDestination(id = 1, movieName = item.originalTitle, movieId = null))
+                                    navigator.navigate(DetailsScreenDestination(id = 1, movieName = item.originalTitle, movieId = item.id))
                                 },
                                 posterPath = item.posterPath,
                                 movieTitle = item.title ?: item.name ?: item.originalTitle ?: "-"
