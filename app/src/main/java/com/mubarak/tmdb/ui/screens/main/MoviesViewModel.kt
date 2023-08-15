@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.flow.take
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,15 +25,15 @@ class MoviesViewModel @Inject constructor(private val movieRepository: IMovieRep
     val viewState = _viewState.asStateFlow()
 
     init {
-        getPopularMovies(genres = 16)
+        getTrendingNow()
     }
 
-    fun getPopularMovies(
-        pageNumber: Int = 1,
-        genres: Int
+    fun getTrendingNow(
+        language: String = "en-US",
+        pathType: String = "movie"
+
     ) {
-        movieRepository.getPopularMovies(pageNumber, genres)
-            .take(1)
+        movieRepository.getTrendingNow(language, pathType)
             .map { it.toUiMovieList() }
             .onEach { _viewState.emit(ViewState.success(it.orEmpty())) }
             .catch { _viewState.emit(it.toViewState()) }
@@ -42,16 +41,4 @@ class MoviesViewModel @Inject constructor(private val movieRepository: IMovieRep
             .launchIn(viewModelScope)
     }
 
-    fun getSearchedMovies(
-        pageNumber: Int = 1,
-        query: String?
-    ) {
-        movieRepository.getSearchedMovies(pageNumber, query)
-            .take(1)
-            .map { it.toUiMovieList() }
-            .onEach { _viewState.emit(ViewState.success(it.orEmpty())) }
-            .catch { _viewState.emit(it.toViewState()) }
-            .flowOn(Dispatchers.IO)
-            .launchIn(viewModelScope)
-    }
 }

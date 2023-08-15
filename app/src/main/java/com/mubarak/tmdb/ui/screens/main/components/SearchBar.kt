@@ -129,7 +129,6 @@ fun ExpandedSearchView(
         IconButton(onClick = {
             onExpandedChanged(false)
             onSearchDisplayClosed()
-            viewModel.getSearchedMovies(query = searchDisplay)
         }) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_arrow_back),
