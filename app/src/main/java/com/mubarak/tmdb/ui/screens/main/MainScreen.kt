@@ -18,21 +18,27 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.data.domain.model.MovieItem
+import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.main.components.MovieCard
 import com.mubarak.tmdb.ui.screens.main.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.main.components.TopBar
 import com.mubarak.tmdb.utils.ViewState
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @RootNavGraph(start = true)
 @Destination
 @Composable
-fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
+fun MainScreen(
+    navigator: DestinationsNavigator,
+    viewModel: MoviesViewModel = hiltViewModel()
+) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
     Column(Modifier.fillMaxSize()) {
+
         TopBar()
         TabRowComponent()
         when (val screenState = state) {
@@ -42,6 +48,9 @@ fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
                     content = {
                         items(screenState.data) { item: MovieItem ->
                             MovieCard(
+                                modifier = Modifier.clickable {
+                                    navigator.navigate(DetailsScreenDestination(id = 1, movieName = item.originalTitle, movieId = null))
+                                },
                                 posterPath = item.posterPath,
                                 movieTitle = item.title ?: item.name ?: item.originalTitle ?: "-"
                             )

@@ -9,19 +9,14 @@ plugins {
     id ("com.google.devtools.ksp") version "1.8.20-1.0.11"
 }
 
-kotlin {
-    sourceSets {
-        debug {
-            kotlin.srcDir("build/generated/ksp/debug/kotlin")
-        }
-        release {
-            kotlin.srcDir("build/generated/ksp/release/kotlin")
-        }
-    }
-}
-
-
 android {
+
+    applicationVariants.all {
+        addJavaSourceFoldersToModel(
+            File(buildDir, "generated/ksp/$name/kotlin")
+        )
+    }
+
     namespace = "com.mubarak.tmdb"
     compileSdk = (34)
 

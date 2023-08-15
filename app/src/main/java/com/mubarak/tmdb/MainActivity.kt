@@ -3,7 +3,7 @@ package com.mubarak.tmdb
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.mubarak.tmdb.ui.screens.main.NavGraphs
+import com.mubarak.tmdb.ui.screens.NavGraphs
 import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,7 +1,5 @@
 package com.mubarak.tmdb.ui.screens.main.components
 
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
@@ -26,16 +23,13 @@ fun MovieCard(
     posterPath: String?,
     modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
     Card(
         modifier = modifier
             .fillMaxWidth()
             .height(300.dp)
             .padding(16.dp)
             .clickable {
-                Toast
-                    .makeText(context, "$movieTitle", LENGTH_SHORT)
-                    .show()
+
             }
     ) {
         Column(
