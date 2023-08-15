@@ -43,6 +43,9 @@ data class ApiMovieItem(
     @SerializedName("title")
     val title: String? = null,
 
+    @SerializedName("name")
+    val name: String? = null,
+
     @SerializedName("genre_ids")
     val genreIds: List<Int?>? = null,
 
@@ -77,6 +80,7 @@ data class ApiMovieItem(
             this.originalTitle,
             this.video,
             this.title,
+            this.name,
             this.genreIds,
             this.posterPath,
             this.backdropPath,

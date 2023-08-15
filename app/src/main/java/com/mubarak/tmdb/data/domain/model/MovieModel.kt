@@ -10,6 +10,7 @@ data class MovieItem(
     val originalTitle: String? = null,
     val video: Boolean? = null,
     val title: String? = null,
+    val name:String? = null,
     val genreIds: List<Int?>? = null,
     val posterPath: String? = null,
     val backdropPath: String? = null,

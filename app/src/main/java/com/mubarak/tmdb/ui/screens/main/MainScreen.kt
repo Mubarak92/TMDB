@@ -19,10 +19,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.data.domain.model.MovieItem
 import com.mubarak.tmdb.ui.screens.main.components.MovieCard
-import com.mubarak.tmdb.ui.screens.main.components.ScrollableTextTabComponent
+import com.mubarak.tmdb.ui.screens.main.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.main.components.TopBar
 import com.mubarak.tmdb.utils.ViewState
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.annotation.RootNavGraph
 
+@RootNavGraph(start = true)
+@Destination
 @Composable
 fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
 
@@ -30,14 +34,17 @@ fun MainScreen(viewModel: MoviesViewModel = hiltViewModel()) {
 
     Column(Modifier.fillMaxSize()) {
         TopBar()
-        ScrollableTextTabComponent()
+        TabRowComponent()
         when (val screenState = state) {
             is ViewState.Success -> {
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     content = {
                         items(screenState.data) { item: MovieItem ->
-                            MovieCard(posterPath = item.posterPath, movieTitle = item.title)
+                            MovieCard(
+                                posterPath = item.posterPath,
+                                movieTitle = item.title ?: item.name ?: item.originalTitle ?: "-"
+                            )
                         }
                     }
                 )

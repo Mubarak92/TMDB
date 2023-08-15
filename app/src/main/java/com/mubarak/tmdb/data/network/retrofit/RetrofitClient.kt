@@ -1,7 +1,10 @@
 package com.mubarak.tmdb.data.network.retrofit
 
+import android.content.Context
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.google.gson.GsonBuilder
 import com.mubarak.tmdb.data.network.Constant.BASE_URL
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -10,13 +13,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class RetrofitClient @Inject constructor() {
+class RetrofitClient @Inject constructor(
+    @ApplicationContext private val context: Context,
+) {
     private val retrofit: Retrofit
 
     init {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
+        val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor)
+            .addInterceptor(ChuckerInterceptor(context))
+            .build()
 
         val gson = GsonBuilder().setLenient().serializeNulls().create()
 

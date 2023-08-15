@@ -6,7 +6,7 @@ plugins {
     id ("com.google.gms.google-services")
     id ("com.google.firebase.crashlytics")
     id ("kotlin-parcelize")
-    id ("com.google.devtools.ksp") version "1.8.0-1.0.9"
+    id ("com.google.devtools.ksp") version "1.8.20-1.0.11"
 }
 
 kotlin {
@@ -55,7 +55,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.4.6"
     }
     packaging {
         resources {
@@ -114,7 +114,7 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-extensions:2.2.0")
 
     // Kotlin components
-    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.22")
+    implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
     api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
@@ -122,7 +122,7 @@ dependencies {
     implementation ("androidx.work:work-runtime-ktx:2.8.1")
 
     //Gson
-    implementation ("com.google.code.gson:gson:2.9.1")
+    implementation ("com.google.code.gson:gson:2.10.1")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // define a BOM okhttp and its version
@@ -136,5 +136,13 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
 
     //ksp
-    implementation("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.11")
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.9.0-1.0.13")
+
+    //chucker
+    debugImplementation ("com.github.chuckerteam.chucker:library:4.0.0")
+    releaseImplementation ("com.github.chuckerteam.chucker:library-no-op:4.0.0")
+
+    //compose-destinations
+    implementation ("io.github.raamcosta.compose-destinations:core:1.9.52")
+    ksp ("io.github.raamcosta.compose-destinations:ksp:1.9.52")
 }
