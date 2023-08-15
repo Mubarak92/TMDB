@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.network
+package com.mubarak.tmdb.data.network.apis
 
 import com.mubarak.tmdb.data.network.Constant.API_KEY
 import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse

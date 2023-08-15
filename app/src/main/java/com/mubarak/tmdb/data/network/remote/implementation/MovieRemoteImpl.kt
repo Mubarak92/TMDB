@@ -1,7 +1,8 @@
-package com.mubarak.tmdb.data.network.remote
+package com.mubarak.tmdb.data.network.remote.implementation
 
-import com.mubarak.tmdb.data.network.MoviesApi
+import com.mubarak.tmdb.data.network.apis.MoviesApi
 import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse
+import com.mubarak.tmdb.data.network.remote.IMovieRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -24,8 +25,6 @@ class MovieRemoteImpl @Inject constructor(
         flow {
             emit(api.searchMovies(pageNumber = pageNumber, query = query))
         }
-
-
 
     override fun getTrendingNow(language: String,pathType:String): Flow<ApiMovieModelResponse> = flow {
         emit(api.trendingNow(language = language, pathType = pathType))

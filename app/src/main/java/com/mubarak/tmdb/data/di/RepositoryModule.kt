@@ -1,6 +1,8 @@
 package com.mubarak.tmdb.data.di
 
-import com.mubarak.tmdb.data.domain.MovieRepositoryImpl
+import com.mubarak.tmdb.data.domain.implementation.DetailsRepositoryImpl
+import com.mubarak.tmdb.data.domain.implementation.MovieRepositoryImpl
+import com.mubarak.tmdb.data.domain.repository.IDetailsRepository
 import com.mubarak.tmdb.data.domain.repository.IMovieRepository
 import dagger.Binds
 import dagger.Module
@@ -13,4 +15,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindMovieRepository(movieRepositoryImpl: MovieRepositoryImpl): IMovieRepository
+
+    @Binds
+    abstract fun bindDetailsRepository(detailsRepositoryImpl: DetailsRepositoryImpl): IDetailsRepository
 }

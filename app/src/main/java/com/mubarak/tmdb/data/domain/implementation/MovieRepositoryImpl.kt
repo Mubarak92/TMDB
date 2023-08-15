@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.domain
+package com.mubarak.tmdb.data.domain.implementation
 
 import com.mubarak.tmdb.data.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse
