@@ -14,17 +14,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.mubarak.tmdb.R
+import com.mubarak.tmdb.ui.theme.DarkBlue
+import com.mubarak.tmdb.ui.theme.LightGreen
 
 @Composable
 fun TopBar(){
     val context = LocalContext.current
 
     TopAppBar(
-        backgroundColor = colorResource(id = R.color.darkBlue),
+        backgroundColor = DarkBlue,
         title = {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -42,7 +43,7 @@ fun TopBar(){
                                 .show()
                         }
                         .padding(horizontal = 16.dp),
-                    tint = colorResource(id = R.color.LightGreen)
+                    tint = LightGreen
                 )
 
                 Image(
