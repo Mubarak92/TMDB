@@ -140,4 +140,8 @@ dependencies {
     //compose-destinations
     implementation ("io.github.raamcosta.compose-destinations:core:1.9.52")
     ksp ("io.github.raamcosta.compose-destinations:ksp:1.9.52")
+
+    //palette
+    implementation("androidx.palette:palette:1.0.0")
+
 }

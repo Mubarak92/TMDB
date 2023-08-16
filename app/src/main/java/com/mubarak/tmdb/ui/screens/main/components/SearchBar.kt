@@ -31,7 +31,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mubarak.tmdb.R
-import com.mubarak.tmdb.ui.screens.main.MoviesViewModel
+import com.mubarak.tmdb.ui.screens.main.MoviesListViewModel
 
 @Composable
 fun ExpandableSearchView(
@@ -106,7 +106,7 @@ fun ExpandedSearchView(
     onSearchDisplayClosed: () -> Unit,
     onExpandedChanged: (Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: MoviesViewModel = hiltViewModel(),
+    viewModel: MoviesListViewModel = hiltViewModel(),
     tint: Color = MaterialTheme.colors.onPrimary,
 ) {
     val focusManager = LocalFocusManager.current

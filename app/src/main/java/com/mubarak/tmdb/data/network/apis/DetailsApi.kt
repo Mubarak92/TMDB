@@ -8,12 +8,11 @@ import retrofit2.http.Query
 
 interface DetailsApi {
 
-    @GET("3/{pathType}/")
+    @GET("3/{pathType}/{movie_id}")
     suspend fun movieDetails(
         @Path("pathType") pathType: String,
-        @Query("movie_id") movieId: Int,
+        @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = Constant.API_KEY,
         @Query("language") language: String? = "en-US",
     ): ApiDetailsModelResponse
-
 }

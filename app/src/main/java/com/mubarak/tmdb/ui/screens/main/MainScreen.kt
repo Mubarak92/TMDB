@@ -1,5 +1,6 @@
 package com.mubarak.tmdb.ui.screens.main
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Snackbar
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -22,7 +24,7 @@ import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.main.components.MovieCard
 import com.mubarak.tmdb.ui.screens.main.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.main.components.TopBar
-import com.mubarak.tmdb.utils.ViewState
+import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -32,51 +34,61 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun MainScreen(
     navigator: DestinationsNavigator,
-    viewModel: MoviesViewModel = hiltViewModel()
+    viewModel: MoviesListViewModel = hiltViewModel()
 ) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
+
+    Log.e("outside", "MainScreen: $state ", )
+
+    LaunchedEffect(null){
+        viewModel.getTrendingNow(language = "en-US", pathType = viewModel.currentType)
+        Log.e("inside", "MainScreen: $state ", )
+    }
 
     Column(Modifier.fillMaxSize()) {
 
         TopBar()
         TabRowComponent()
-        when (val screenState = state) {
-            is ViewState.Success -> {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    content = {
-                        items(screenState.data) { item: MovieItem ->
-                            MovieCard(
-                                modifier = Modifier.clickable {
-                                    navigator.navigate(DetailsScreenDestination(id = 1, movieName = item.originalTitle, movieId = item.id!!))
-                                },
-                                posterPath = item.posterPath,
-                                movieTitle = item.title ?: item.name ?: item.originalTitle ?: "-"
+
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            content = {
+                items(state?.data.orEmpty()) { item: MovieItem ->
+                    MovieCard(
+                        modifier = Modifier.clickable {
+                            navigator.navigate(
+                                DetailsScreenDestination(
+                                    id = 1,
+                                    movieName = item.originalTitle,
+                                    movieId = item.id!!,
+                                    pathType = viewModel.currentType
+                                )
                             )
-                        }
-                    }
-                )
-            }
-
-            is ViewState.Error -> {
-                Snackbar(modifier = Modifier.padding(4.dp),
-                    action = {
-                        Text(
-                            text = "Try again",
-                            modifier = Modifier.clickable {
-                            })
-                    }) {
-                    Text("an error occurred")
+                        },
+                        posterPath = item.posterPath,
+                        movieTitle = item.title ?: item.name ?: item.originalTitle ?: "-"
+                    )
                 }
             }
+        )
 
-            is ViewState.Loading -> {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    CircularProgressIndicator()
-                }
+        if (state?.error == true) {
+            Snackbar(modifier = Modifier.padding(4.dp),
+                action = {
+                    Text(
+                        text = "Try again",
+                        modifier = Modifier.clickable {
+                        })
+                }) {
+                Text("an error occurred")
             }
+        }
 
+        if (state?.isLoading == true) {
+            Box(modifier = Modifier.fillMaxSize()) {
+                CircularProgressIndicator()
+            }
         }
     }
 }
