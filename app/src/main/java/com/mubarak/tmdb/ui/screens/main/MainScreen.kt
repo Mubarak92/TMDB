@@ -1,6 +1,5 @@
 package com.mubarak.tmdb.ui.screens.main
 
-import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +23,6 @@ import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.main.components.MovieCard
 import com.mubarak.tmdb.ui.screens.main.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.main.components.TopBar
-import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -39,11 +37,8 @@ fun MainScreen(
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
-    Log.e("outside", "MainScreen: $state ", )
-
     LaunchedEffect(null){
         viewModel.getTrendingNow(language = "en-US", pathType = viewModel.currentType)
-        Log.e("inside", "MainScreen: $state ", )
     }
 
     Column(Modifier.fillMaxSize()) {
@@ -60,9 +55,9 @@ fun MainScreen(
                             navigator.navigate(
                                 DetailsScreenDestination(
                                     id = 1,
-                                    movieName = item.originalTitle,
+                                    movieTitle = item.originalTitle,
                                     movieId = item.id!!,
-                                    pathType = viewModel.currentType
+                                    pathType = viewModel.currentType,
                                 )
                             )
                         },

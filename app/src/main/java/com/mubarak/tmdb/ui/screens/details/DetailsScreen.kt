@@ -8,30 +8,37 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.ui.screens.components.DetailsCard
+import com.mubarak.tmdb.ui.screens.details.components.DetailsCard
+import com.mubarak.tmdb.ui.screens.details.components.DetailsTopBar
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
 fun DetailsScreen(
     id: Int,
     movieId: Int,
-    movieName: String?,
+    movieTitle: String?,
     pathType:String,
-    viewModel: DetailsViewModel = hiltViewModel()
-) {
+    viewModel: DetailsViewModel = hiltViewModel(),
+    navigator: DestinationsNavigator
+    ) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
     LaunchedEffect(null) {
         viewModel.getMovieDetails(movieId = movieId, pathType = pathType)
     }
-
     Column(modifier = Modifier.fillMaxSize()) {
-        DetailsCard(
-            posterPath = state?.posterPath,
-            movieTitle = state?.title ?: state?.originalTitle ?: "-",
-            backgroundPoster = state?.backdropPath
-        )
+
+        DetailsTopBar(movieTitle, navigator)
+
+        Column(modifier = Modifier.fillMaxSize()) {
+            DetailsCard(
+                posterPath = state?.posterPath,
+                movieTitle = state?.title ?: state?.originalTitle ?: "-",
+                backgroundPoster = state?.backdropPath
+            )
+        }
     }
 }

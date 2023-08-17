@@ -79,7 +79,7 @@ dependencies {
     debugImplementation ("androidx.compose.ui:ui-test-manifest:1.5.0")
 
     //hilt
-    implementation ("com.google.dagger:hilt-android:2.44.2")
+    implementation ("com.google.dagger:hilt-android:2.47")
     kapt ("com.google.dagger:hilt-compiler:2.44.2")
     kapt ("androidx.hilt:hilt-compiler:1.0.0")
     implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
@@ -110,8 +110,8 @@ dependencies {
 
     // Kotlin components
     implementation ("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.0")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
-    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.2")
+    api ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.2")
 
     // Worker
     implementation ("androidx.work:work-runtime-ktx:2.8.1")
@@ -143,5 +143,10 @@ dependencies {
 
     //palette
     implementation("androidx.palette:palette:1.0.0")
+    implementation("androidx.palette:palette-ktx:1.0.0")
+
+    //landscapist
+    implementation ("com.github.skydoves:landscapist-coil:2.2.6")
+    implementation ("com.github.skydoves:landscapist-palette:2.2.6")
 
 }
