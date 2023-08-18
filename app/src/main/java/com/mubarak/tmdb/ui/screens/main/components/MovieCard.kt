@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -26,11 +27,12 @@ fun MovieCard(
     posterPath: String?,
     modifier: Modifier = Modifier
 ) {
+
     Card(
         modifier = modifier
-            .fillMaxWidth()
-            .height(300.dp)
-            .padding(16.dp)
+            .width(210.dp)
+            .height(280.dp)
+            .padding(12.dp)
             .clickable {
 
             }
