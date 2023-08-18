@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.details
+package com.mubarak.tmdb.ui.screens.main.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +8,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.ui.screens.details.components.DetailsCard
-import com.mubarak.tmdb.ui.screens.details.components.DetailsTopBar
+import com.mubarak.tmdb.ui.screens.main.details.components.DetailsCard
+import com.mubarak.tmdb.ui.screens.main.details.components.DetailsTopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -29,6 +29,7 @@ fun DetailsScreen(
     LaunchedEffect(null) {
         viewModel.getMovieDetails(movieId = movieId, pathType = pathType)
     }
+
     Column(modifier = Modifier.fillMaxSize()) {
 
         DetailsTopBar(movieTitle, navigator)

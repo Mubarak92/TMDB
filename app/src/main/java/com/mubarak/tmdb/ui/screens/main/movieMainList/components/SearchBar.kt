@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.components
+package com.mubarak.tmdb.ui.screens.main.movieMainList.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Arrangement
@@ -31,7 +31,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mubarak.tmdb.R
-import com.mubarak.tmdb.ui.screens.main.MoviesListViewModel
+import com.mubarak.tmdb.ui.screens.main.movieMainList.MoviesListViewModel
 
 @Composable
 fun ExpandableSearchView(

@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main
+package com.mubarak.tmdb.ui.screens.main.movieMainList
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -11,16 +11,15 @@ import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Snackbar
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.ui.screens.main.components.MainMovieListLazyRow
-import com.mubarak.tmdb.ui.screens.main.components.TabRowComponent
-import com.mubarak.tmdb.ui.screens.main.components.TopBar
+import com.mubarak.tmdb.ui.screens.main.movieMainList.components.MainMovieListLazyRow
+import com.mubarak.tmdb.ui.screens.main.movieMainList.components.TabRowComponent
+import com.mubarak.tmdb.ui.screens.main.movieMainList.components.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -34,10 +33,6 @@ fun MainScreen(
 ) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-
-    LaunchedEffect(null) {
-        viewModel.getTrendingNow(language = "en-US", pathType = viewModel.currentType)
-    }
 
     Column(Modifier.fillMaxSize()) {
 

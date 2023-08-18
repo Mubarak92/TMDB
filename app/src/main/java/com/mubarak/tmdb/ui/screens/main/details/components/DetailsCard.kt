@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.details.components
+package com.mubarak.tmdb.ui.screens.main.details.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
@@ -48,7 +48,7 @@ fun DetailsCard(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .alpha(0.1f)
+                    .alpha(0.2f)
                     .background(color = Color(it?.lightVibrantSwatch?.rgb ?: 0))
                     .fillMaxSize()
             )

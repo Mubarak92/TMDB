@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.details
+package com.mubarak.tmdb.ui.screens.main.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

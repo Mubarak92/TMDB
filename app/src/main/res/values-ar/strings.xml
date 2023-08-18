@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">TMDB</string>
 
+    <string name="discover">إستكشف</string>
+    <string name="favorite">المفضلة</string>
+    <string name="search">البحث</string>
+    <string name="home">الرئيسية</string>
+    <string name="people">أشخاص</string>
+
     <string name="action">أكشن</string>
     <string name="adventure">مغامرات</string>
     <string name="animation">رسوم متحركة</string>

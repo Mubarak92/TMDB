@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.components
+package com.mubarak.tmdb.ui.screens.main.movieMainList.components
 
 import android.widget.Toast
 import androidx.compose.foundation.Image

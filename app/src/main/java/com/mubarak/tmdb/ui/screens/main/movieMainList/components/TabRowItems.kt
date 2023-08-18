@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.components
+package com.mubarak.tmdb.ui.screens.main.movieMainList.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.mubarak.tmdb.ui.screens.main.MoviesListViewModel
+import com.mubarak.tmdb.ui.screens.main.movieMainList.MoviesListViewModel
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightBlue
 
@@ -51,7 +51,7 @@ fun TabRowComponent(
                 onClick = {
                     selectedIndex = index
                     viewModel.currentType = movieItem.type
-                    viewModel.getTrendingNow(pathType = movieItem.type)
+                    viewModel.getMovieList(pathType = movieItem.type)
                 },
                 text = { Text(text = movieItem.name) }
             )

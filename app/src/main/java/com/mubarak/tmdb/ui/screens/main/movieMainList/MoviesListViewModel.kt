@@ -1,10 +1,9 @@
-package com.mubarak.tmdb.ui.screens.main
+package com.mubarak.tmdb.ui.screens.main.movieMainList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mubarak.tmdb.data.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse.Companion.toUiMovieList
-import com.mubarak.tmdb.utils.MovieListViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +25,11 @@ class MoviesListViewModel @Inject constructor(private val movieRepository: IMovi
     private val _viewState = MutableStateFlow<MovieListViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
-    fun getTrendingNow(
+    init {
+        getMovieList()
+    }
+
+    fun getMovieList(
         language: String = "en-US",
         pathType: String = currentType
     ) {
