@@ -17,7 +17,7 @@ data class MovieItem(
     val releaseDate: String? = null,
     val popularity: Double? = null,
     val voteAverage: Double? = null,
-    val id: Int? = null,
+    val id: Int,
     val adult: Boolean? = null,
     val voteCount: Int? = null
 ): Parcelable

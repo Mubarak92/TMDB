@@ -1,6 +1,6 @@
 package com.mubarak.tmdb.data.domain.model
 
-data class DetailsItem(
+data class MovieDetailsItem(
     val originalLanguage: String? = null,
     val imdbId: String? = null,
     val video: Boolean? = null,
@@ -57,3 +57,5 @@ data class ProductionCompaniesItem(
     val id: Int? = null,
     val originCountry: String? = null
 )
+
+

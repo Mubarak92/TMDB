@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.network.remote.implementation
 
 import com.mubarak.tmdb.data.network.apis.DetailsApi
-import com.mubarak.tmdb.data.network.model.ApiDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.ApiMovieDetailsModelResponse
 import com.mubarak.tmdb.data.network.remote.IDetailsRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.Flow
@@ -19,8 +19,8 @@ class DetailsRemoteImpl @Inject constructor(
     override fun getMovieDetails(
         language: String,
         pathType: String,
-        movieId: Int
-    ): Flow<ApiDetailsModelResponse> = flow {
+        movieId: Int?
+    ): Flow<ApiMovieDetailsModelResponse> = flow {
         emit(api.movieDetails(language = language, pathType = pathType, movieId = movieId))
     }
 

@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">TMDB</string>
+    <string name="movies">الأفلام</string>
+    <string name="tv_shows">المسلسلات</string>
 
     <string name="discover">إستكشف</string>
     <string name="favorite">المفضلة</string>
     <string name="search">البحث</string>
     <string name="home">الرئيسية</string>
     <string name="people">أشخاص</string>
+    <string name="settings">الإعدادات</string>
 
     <string name="action">أكشن</string>
     <string name="adventure">مغامرات</string>

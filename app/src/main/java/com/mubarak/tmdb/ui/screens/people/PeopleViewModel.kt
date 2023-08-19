@@ -30,7 +30,7 @@ class PeopleViewModel @Inject constructor(private val peopleRepository: IPeopleR
         private fun getTrendingPeople(
             language: String = "en-US",
         ) {
-            peopleRepository.getTrendingPeople(language)
+            peopleRepository.getTrendingPeople(language, page = 1, totalPages = 10)
                 .onStart { _viewState.emit(PeopleViewState(isLoading = true)) }
                 .map { it.toUiPeopleList() }
                 .onEach { _viewState.emit(PeopleViewState(data = it)) }

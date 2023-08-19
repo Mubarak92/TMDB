@@ -13,7 +13,7 @@ interface MoviesApi {
         @Query("page_number") pageNumber: Int = 1,
         @Query("api_key") apiKey: String = API_KEY,
         @Query("with_genres") genres: Int,
-        @Query("language") language: String = "en-US"
+        @Query("language") language: String
     ): ApiMovieModelResponse
 
     @GET("3/movie/search")

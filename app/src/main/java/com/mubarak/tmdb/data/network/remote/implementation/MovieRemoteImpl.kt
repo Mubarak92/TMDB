@@ -16,9 +16,9 @@ class MovieRemoteImpl @Inject constructor(
 
     private val api = retrofitClient.getService(MoviesApi::class.java)
 
-    override fun getPopularMovies(pageNumber: Int, genres: Int): Flow<ApiMovieModelResponse> =
+    override fun getPopularMovies(pageNumber: Int, genres: Int,language: String): Flow<ApiMovieModelResponse> =
         flow {
-            emit(api.getPopularMovies(pageNumber, genres = genres))
+            emit(api.getPopularMovies(pageNumber, genres = genres, language = language))
         }
 
     override fun getSearchedMovies(pageNumber: Int, query: String?): Flow<ApiMovieModelResponse> =

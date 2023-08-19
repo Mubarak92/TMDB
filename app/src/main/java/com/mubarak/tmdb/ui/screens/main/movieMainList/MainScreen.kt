@@ -36,7 +36,7 @@ fun MainScreen(
 
     Column(Modifier.fillMaxSize()) {
 
-        TopBar()
+        TopBar(navigator)
         TabRowComponent()
 
         Column(

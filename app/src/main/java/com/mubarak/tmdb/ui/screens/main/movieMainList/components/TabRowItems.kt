@@ -14,8 +14,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.mubarak.tmdb.R
 import com.mubarak.tmdb.ui.screens.main.movieMainList.MoviesListViewModel
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightBlue
@@ -27,8 +29,8 @@ fun TabRowComponent(
     var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
 
     val list = listOf(
-        (TabRowItems("Movies", "movie")),
-        (TabRowItems("Tv Shows", "tv")),
+        (TabRowItems(stringResource(id = R.string.movies), "movie")),
+        (TabRowItems(stringResource(id = R.string.tv_shows), "tv")),
     )
 
     TabRow(

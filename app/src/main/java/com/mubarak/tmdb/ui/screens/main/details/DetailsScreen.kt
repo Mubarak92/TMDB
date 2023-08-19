@@ -17,12 +17,12 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun DetailsScreen(
     id: Int,
-    movieId: Int,
+    movieId: Int?,
     movieTitle: String?,
-    pathType:String,
+    pathType: String,
     viewModel: DetailsViewModel = hiltViewModel(),
     navigator: DestinationsNavigator
-    ) {
+) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
@@ -36,9 +36,9 @@ fun DetailsScreen(
 
         Column(modifier = Modifier.fillMaxSize()) {
             DetailsCard(
-                posterPath = state?.posterPath,
-                movieTitle = state?.title ?: state?.originalTitle ?: "-",
-                backgroundPoster = state?.backdropPath
+                posterPath = state?.data?.posterPath,
+                movieTitle = state?.data?.title ?: state?.data?.originalTitle ?: "-",
+                backgroundPoster = state?.data?.backdropPath
             )
         }
     }

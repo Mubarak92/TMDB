@@ -12,6 +12,11 @@ import javax.inject.Singleton
 class PeopleRepositoryImpl @Inject constructor(private val peopleRemote: IPeopleRemote) :
     IPeopleRepository {
 
-    override fun getTrendingPeople(language: String): Flow<ApiPeopleModelResponse> =
-        peopleRemote.getTrendingPeople(language)
+    override fun getTrendingPeople(
+        language: String, page: Int,
+        totalPages: Int
+    ): Flow<ApiPeopleModelResponse> =
+        peopleRemote.getTrendingPeople(
+            language = language,
+            page = page, totalPages = totalPages)
 }

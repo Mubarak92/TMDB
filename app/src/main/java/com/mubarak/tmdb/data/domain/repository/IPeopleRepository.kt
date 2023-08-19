@@ -5,6 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface IPeopleRepository {
 
-    fun getTrendingPeople(language: String): Flow<ApiPeopleModelResponse>
+    fun getTrendingPeople(
+        language: String,
+        page: Int,
+        totalPages: Int
+    ): Flow<ApiPeopleModelResponse>
 
 }

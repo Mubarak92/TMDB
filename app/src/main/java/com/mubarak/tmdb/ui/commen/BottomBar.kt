@@ -6,6 +6,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,6 +24,7 @@ import com.mubarak.tmdb.ui.screens.destinations.DiscoverScreenDestination
 import com.mubarak.tmdb.ui.screens.destinations.FavoriteScreenDestination
 import com.mubarak.tmdb.ui.screens.destinations.MainScreenDestination
 import com.mubarak.tmdb.ui.screens.destinations.PeopleScreenDestination
+import com.mubarak.tmdb.ui.screens.destinations.SettingsScreenDestination
 import com.mubarak.tmdb.ui.screens.startAppDestination
 import com.ramcosta.composedestinations.navigation.navigate
 
@@ -94,4 +96,5 @@ enum class BottomBarDestination(
     PEOPLE(PeopleScreenDestination, Icons.Default.Person, com.mubarak.tmdb.R.string.people),
     DISCOVER(DiscoverScreenDestination, Icons.Default.List, com.mubarak.tmdb.R.string.discover),
     FAVORITE(FavoriteScreenDestination, Icons.Default.Favorite, com.mubarak.tmdb.R.string.favorite),
+    SETTINGS(SettingsScreenDestination, Icons.Default.Settings, com.mubarak.tmdb.R.string.settings),
 }

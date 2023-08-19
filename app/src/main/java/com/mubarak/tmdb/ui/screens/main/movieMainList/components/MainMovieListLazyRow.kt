@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.mubarak.tmdb.data.domain.model.MovieItem
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.main.movieMainList.MoviesListViewModel
@@ -20,9 +21,14 @@ fun MainMovieListLazyRow(
     state: MovieListViewState?,
     navigator: DestinationsNavigator,
     viewModel: MoviesListViewModel,
-    title:String
+    title: String
 ) {
-    Text(modifier = Modifier.padding(start = 16.dp, top = 16.dp),text = title, fontWeight = FontWeight.Bold)
+    Text(
+        modifier = Modifier.padding(start = 16.dp, top = 16.dp),
+        text = title,
+        fontWeight = FontWeight.Bold,
+        fontSize = 16.sp
+    )
     LazyRow(
         content = {
             items(state?.data.orEmpty()) { item: MovieItem ->
@@ -32,7 +38,7 @@ fun MainMovieListLazyRow(
                             DetailsScreenDestination(
                                 id = 1,
                                 movieTitle = item.originalTitle,
-                                movieId = item.id!!,
+                                movieId = item.id,
                                 pathType = viewModel.currentType,
                             )
                         )

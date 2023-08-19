@@ -16,8 +16,12 @@ class PeopleRemoteImpl @Inject constructor(
 
     private val api = retrofitClient.getService(PeopleApi::class.java)
 
-    override fun getTrendingPeople(language: String): Flow<ApiPeopleModelResponse> =
+    override fun getTrendingPeople(
+        language: String,
+        page: Int,
+        totalPages: Int
+    ): Flow<ApiPeopleModelResponse> =
         flow {
-            emit(api.trendingPeople())
+            emit(api.trendingPeople(page = page, language = "en-US", totalPages = totalPages))
         }
 }

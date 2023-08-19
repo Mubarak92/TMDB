@@ -1,6 +1,5 @@
 package com.mubarak.tmdb.ui.screens.main.movieMainList.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,13 +7,16 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant.BASE_POSTER_URL
@@ -29,12 +31,9 @@ fun MovieCard(
 
     Card(
         modifier = modifier
-            .width(210.dp)
-            .height(280.dp)
-            .padding(12.dp)
-            .clickable {
-
-            }
+            .width(200.dp)
+            .height(300.dp)
+            .padding(8.dp)
     ) {
         Column(
             modifier = Modifier.fillMaxWidth(),
@@ -44,7 +43,11 @@ fun MovieCard(
             val imageUrl = BASE_POSTER_URL + posterPath
             CoilImage(
                 imageModel = { imageUrl },
-                modifier = modifier,
+                modifier = modifier
+                    .padding(start = 8.dp, end = 8.dp, top = 8.dp)
+                    .height(240.dp)
+                    .fillMaxWidth()
+                    .clip(shape = RoundedCornerShape(4.dp)),
                 // shows an indicator while loading an image.
                 loading = {
                     Box(modifier = Modifier.matchParentSize()) {
@@ -59,7 +62,12 @@ fun MovieCard(
                     Text(text = "image request failed.")
                 }
             )
-            Text(maxLines = 2, text = movieTitle ?: "-", modifier = Modifier.padding(8.dp))
+            Text(
+                maxLines = 2,
+                text = movieTitle ?: "-",
+                modifier = Modifier.padding(8.dp),
+                overflow = TextOverflow.Ellipsis
+            )
         }
     }
 }
