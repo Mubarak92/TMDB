@@ -2,9 +2,11 @@ package com.mubarak.tmdb.ui.screens.main.details.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -22,11 +24,14 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
+import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
 import com.skydoves.landscapist.palette.PalettePlugin
 import com.skydoves.landscapist.palette.rememberPaletteState
+import com.skydoves.landscapist.transformation.blur.BlurTransformationPlugin
 
 @Composable
 fun DetailsCard(
@@ -59,25 +64,24 @@ fun DetailsCard(
 
             CoilImage(
                 imageModel = { backGroundImageUrl },
+                previewPlaceholder = R.drawable.ic_broken_image,
                 modifier = modifier
-                    .fillMaxWidth().height(300.dp)
+                    .fillMaxWidth()
+                    .height(300.dp)
                     .alpha(0.2f),
-                // shows an indicator while loading an image.
-                loading = {
-                    Box(modifier = Modifier.matchParentSize()) {
-                        CircularProgressIndicator(
-                            modifier = Modifier.align(Alignment.Center)
-                        )
-                    }
+                component = rememberImageComponent {
+                    +BlurTransformationPlugin(radius = 5)
+                    +CrossfadePlugin(duration = 550)
                 },
             )
 
-            Row() {
+            Row(Modifier.fillMaxWidth()) {
 
                 val imageUrl = Constant.BASE_POSTER_URL + posterPath
 
                 CoilImage(
                     imageModel = { imageUrl },
+                    previewPlaceholder = R.drawable.full_logo,
                     modifier = modifier
                         .height(300.dp)
                         .width(200.dp)
@@ -95,11 +99,11 @@ fun DetailsCard(
                     },
                 )
 
-                Column {
+                Column(modifier = Modifier.fillMaxHeight(), verticalArrangement = Arrangement.SpaceBetween) {
                     Text(text = "Title")
                     Text(text = "Title")
                     Text(text = "Title")
-                    Text(text = "Title")
+                    Text(text = "TitleTitleTitleTitleTitle")
                 }
             }
         }

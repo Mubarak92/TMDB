@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusTarget
 import androidx.navigation.compose.rememberNavController
 import com.mubarak.tmdb.ui.screens.NavGraphs
+import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.ramcosta.composedestinations.DestinationsNavHost
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MainScaffold() {
+    SetStatusBarColor(DarkBlue)
     val navController = rememberNavController()
 
     Scaffold(

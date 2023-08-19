@@ -43,9 +43,8 @@ fun MainScreen(
             Modifier
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())) {
-            MainMovieListLazyRow(state, navigator, viewModel, "Trending Now")
-            MainMovieListLazyRow(state, navigator, viewModel, "What's New")
-            MainMovieListLazyRow(state, navigator, viewModel, "Other")
+            MainMovieListLazyRow(state, navigator, viewModel, "Trending Now", false)
+            MainMovieListLazyRow(state, navigator, viewModel, "What's New",true)
 
             if (state?.error == true) {
                 Snackbar(modifier = Modifier.padding(4.dp),
