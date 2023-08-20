@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.domain.implementation
 
 import com.mubarak.tmdb.data.domain.repository.IMovieRepository
-import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse
+import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse
 import com.mubarak.tmdb.data.network.remote.IMovieRemote
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

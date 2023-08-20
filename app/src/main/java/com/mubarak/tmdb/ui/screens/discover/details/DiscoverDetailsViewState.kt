@@ -1,6 +1,6 @@
 package com.mubarak.tmdb.ui.screens.discover.details
 
-import com.mubarak.tmdb.data.domain.model.MovieItem
+import com.mubarak.tmdb.data.domain.model.movieModel.MovieItem
 
 data class DiscoverDetailsViewState(
     val isLoading: Boolean = false,

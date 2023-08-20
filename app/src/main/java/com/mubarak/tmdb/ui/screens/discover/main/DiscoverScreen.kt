@@ -38,7 +38,7 @@ fun DiscoverScreen(
 
     LazyColumn(content = {
         items(list) { item ->
-            DiscoverCard(name = item.name, genres = item.id, navigator = navigator)
+            DiscoverCard(title = item.name, genres = item.id, navigator = navigator)
         }
     })
 

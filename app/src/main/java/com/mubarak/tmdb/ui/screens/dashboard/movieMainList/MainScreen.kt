@@ -19,7 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MainMovieListLazyRow
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TopBar
+import com.mubarak.tmdb.ui.commen.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -36,7 +36,7 @@ fun MainScreen(
 
     Column(Modifier.fillMaxSize()) {
 
-        TopBar(navigator)
+        TopBar(navigator,true)
         TabRowComponent()
 
         Column(

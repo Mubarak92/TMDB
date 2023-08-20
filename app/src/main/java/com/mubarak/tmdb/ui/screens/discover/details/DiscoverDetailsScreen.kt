@@ -19,7 +19,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.data.domain.model.MovieItem
+import com.mubarak.tmdb.data.domain.model.movieModel.MovieItem
+import com.mubarak.tmdb.ui.commen.TopBar
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
@@ -29,6 +30,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Destination
 @Composable
 fun DiscoverDetailsScreen(
+    discoverTitle:String,
     genres: Int,
     viewModel: DiscoverDetailsViewModel = hiltViewModel(),
     navigator: DestinationsNavigator,
@@ -40,8 +42,8 @@ fun DiscoverDetailsScreen(
         viewModel.getMovieList(genres = genres)
     }
 
-
     Column(Modifier.fillMaxSize()) {
+        TopBar(navigator,hasSearchIcon = false,hasTitle = true, title = discoverTitle)
 
         TabRowComponent()
 

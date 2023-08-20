@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.domain.model
+package com.mubarak.tmdb.data.domain.model.movieModel
 
 data class MovieDetailsItem(
     val originalLanguage: String? = null,

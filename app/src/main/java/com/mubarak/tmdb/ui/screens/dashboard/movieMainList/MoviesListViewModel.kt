@@ -3,7 +3,7 @@ package com.mubarak.tmdb.ui.screens.dashboard.movieMainList
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mubarak.tmdb.data.domain.repository.IMovieRepository
-import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse.Companion.toUiMovieList
+import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse.Companion.toUiMovieList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

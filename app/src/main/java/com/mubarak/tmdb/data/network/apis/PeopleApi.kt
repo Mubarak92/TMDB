@@ -1,8 +1,10 @@
 package com.mubarak.tmdb.data.network.apis
 
 import com.mubarak.tmdb.data.network.Constant
-import com.mubarak.tmdb.data.network.model.ApiPeopleModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface PeopleApi {
@@ -14,4 +16,13 @@ interface PeopleApi {
         @Query("page") page: Int,
         @Query("total_result1s") totalPages: Int
     ): ApiPeopleModelResponse
+
+    @GET("3/person/{person_id}")
+    suspend fun peopleDetails(
+        @Path("person_id") personId: Int,
+        @Query("api_key") apiKey: String = Constant.API_KEY,
+        @Query("language") language: String?,
+    ): ApiPeopleDetailsModelResponse
+
+
 }

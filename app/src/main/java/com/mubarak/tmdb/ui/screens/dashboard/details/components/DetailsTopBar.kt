@@ -24,7 +24,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Destination
 @Composable
 fun DetailsTopBar(
-    movieTitle: String?,
+    title: String?,
     navigator: DestinationsNavigator,
 ) {
     TopAppBar(
@@ -46,10 +46,10 @@ fun DetailsTopBar(
                     tint = LightGreen
                 )
 
-                if (movieTitle != null) {
+                if (title != null) {
                     Text(
                         textAlign = TextAlign.Center,
-                        text = movieTitle,
+                        text = title,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 16.dp),

@@ -1,9 +1,9 @@
-package com.mubarak.tmdb.ui.screens.people
+package com.mubarak.tmdb.ui.screens.people.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mubarak.tmdb.data.domain.repository.IPeopleRepository
-import com.mubarak.tmdb.data.network.model.ApiPeopleModelResponse.Companion.toUiPeopleList
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse.Companion.toUiPeopleList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -11,6 +11,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mubarak.tmdb.ui.commen.MainScaffold
 import com.mubarak.tmdb.ui.commen.SplashViewModel
 import com.mubarak.tmdb.ui.screens.settings.LocaleManager
+import com.mubarak.tmdb.ui.theme.TMDBTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,16 +27,18 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
-            val context = LocalContext.current
+            TMDBTheme {
+                val context = LocalContext.current
 
-            val savedLocale = LocaleManager.getSavedLocale(context)
+                val savedLocale = LocaleManager.getSavedLocale(context)
 
-            CompositionLocalProvider(LocalContext provides context) {
+                CompositionLocalProvider(LocalContext provides context) {
                     val resources = context.resources
                     val config = Configuration(resources.configuration)
                     config.setLocale(savedLocale)
                     resources.updateConfiguration(config, resources.displayMetrics)
                     MainScaffold()
+                }
             }
         }
     }

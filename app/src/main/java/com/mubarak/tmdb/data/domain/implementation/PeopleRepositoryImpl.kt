@@ -1,7 +1,8 @@
 package com.mubarak.tmdb.data.domain.implementation
 
 import com.mubarak.tmdb.data.domain.repository.IPeopleRepository
-import com.mubarak.tmdb.data.network.model.ApiPeopleModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -18,5 +19,13 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleRemote: IPeople
     ): Flow<ApiPeopleModelResponse> =
         peopleRemote.getTrendingPeople(
             language = language,
-            page = page, totalPages = totalPages)
+            page = page, totalPages = totalPages
+        )
+
+    override fun getPeopleDetails(
+        personId: Int,
+        language: String
+    ): Flow<ApiPeopleDetailsModelResponse> =
+        peopleRemote.getPeopleDetails(language = language, personId = personId)
+
 }

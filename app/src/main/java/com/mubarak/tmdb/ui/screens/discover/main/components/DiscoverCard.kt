@@ -7,14 +7,13 @@ import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.mubarak.tmdb.ui.screens.destinations.DiscoverDetailsScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
 fun DiscoverCard(
-    name: String,
+    title: String,
     genres: Int,
     navigator: DestinationsNavigator,
 ) {
@@ -23,9 +22,14 @@ fun DiscoverCard(
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navigator.navigate(DiscoverDetailsScreenDestination(genres))
+                navigator.navigate(
+                    DiscoverDetailsScreenDestination(
+                        genres = genres,
+                        discoverTitle = title
+                    )
+                )
             }
     ) {
-        Text(text = name, modifier = Modifier.padding(16.dp))
+        Text(text = title, modifier = Modifier.padding(16.dp))
     }
 }

@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.network.remote.implementation
 
 import com.mubarak.tmdb.data.network.apis.DetailsApi
-import com.mubarak.tmdb.data.network.model.ApiMovieDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieDetailsModelResponse
 import com.mubarak.tmdb.data.network.remote.IDetailsRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.Flow

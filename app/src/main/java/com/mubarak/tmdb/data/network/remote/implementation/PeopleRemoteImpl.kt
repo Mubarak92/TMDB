@@ -1,7 +1,8 @@
 package com.mubarak.tmdb.data.network.remote.implementation
 
 import com.mubarak.tmdb.data.network.apis.PeopleApi
-import com.mubarak.tmdb.data.network.model.ApiPeopleModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.Flow
@@ -24,4 +25,13 @@ class PeopleRemoteImpl @Inject constructor(
         flow {
             emit(api.trendingPeople(page = page, language = "en-US", totalPages = totalPages))
         }
+
+    override fun getPeopleDetails(
+        personId: Int,
+        language: String
+    ): Flow<ApiPeopleDetailsModelResponse> =
+        flow {
+            emit(api.peopleDetails( language = "en-US", personId = personId))
+        }
 }
+

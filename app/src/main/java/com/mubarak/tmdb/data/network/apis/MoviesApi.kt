@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.network.apis
 
 import com.mubarak.tmdb.data.network.Constant.API_KEY
-import com.mubarak.tmdb.data.network.model.ApiMovieModelResponse
+import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

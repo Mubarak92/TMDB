@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.domain.model
+package com.mubarak.tmdb.data.domain.model.peopleModel
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
