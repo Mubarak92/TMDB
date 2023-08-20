@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.movieMainList
+package com.mubarak.tmdb.ui.screens.dashboard.movieMainList
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.ui.screens.main.movieMainList.components.MainMovieListLazyRow
-import com.mubarak.tmdb.ui.screens.main.movieMainList.components.TabRowComponent
-import com.mubarak.tmdb.ui.screens.main.movieMainList.components.TopBar
+import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MainMovieListLazyRow
+import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent
+import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.movieMainList
+package com.mubarak.tmdb.ui.screens.discover.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,29 +17,23 @@ import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesListViewModel @Inject constructor(private val movieRepository: IMovieRepository) :
+class DiscoverDetailsViewModel @Inject constructor(private val movieRepository: IMovieRepository) :
     ViewModel() {
 
-    var currentType = "movie"
-
-    private val _viewState = MutableStateFlow<MovieListViewState?>(null)
+    private val _viewState = MutableStateFlow<DiscoverDetailsViewState?>(null)
     val viewState = _viewState.asStateFlow()
-
-    init {
-        getMovieList()
-    }
 
     fun getMovieList(
         language: String = "en-US",
-        pathType: String = currentType
+        genres: Int
     ) {
-        movieRepository.getTrendingNow(language, pathType)
-            .onStart { _viewState.emit(MovieListViewState(isLoading = true)) }
+        movieRepository.getPopularMovies(1,genres,language)
+            .onStart { _viewState.emit(DiscoverDetailsViewState(isLoading = true)) }
             .map { it.toUiMovieList() }
-            .onEach { _viewState.emit(MovieListViewState(data = it.orEmpty())) }
+            .onEach { _viewState.emit(DiscoverDetailsViewState(data = it.orEmpty())) }
             .catch {
                 _viewState.emit(
-                    MovieListViewState(
+                    DiscoverDetailsViewState(
                         error = _viewState.value?.error ?: throw Exception(it)
                     )
                 )

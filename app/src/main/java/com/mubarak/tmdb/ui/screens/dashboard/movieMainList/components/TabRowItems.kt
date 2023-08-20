@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.movieMainList.components
+package com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,7 +18,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mubarak.tmdb.R
-import com.mubarak.tmdb.ui.screens.main.movieMainList.MoviesListViewModel
+import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.MoviesListViewModel
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightBlue
 

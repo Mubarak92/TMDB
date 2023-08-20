@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.details
+package com.mubarak.tmdb.ui.screens.dashboard.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -36,6 +36,4 @@ class DetailsViewModel @Inject constructor(private val detailsRepository: IDetai
             .flowOn(Dispatchers.IO)
             .launchIn(viewModelScope)
     }
-
-
 }

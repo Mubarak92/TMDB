@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.details.components
+package com.mubarak.tmdb.ui.screens.dashboard.details.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.background

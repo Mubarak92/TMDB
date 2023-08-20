@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.movieMainList.components
+package com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

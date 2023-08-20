@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.details.components
+package com.mubarak.tmdb.ui.screens.dashboard.details.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.main.movieMainList.components
+package com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
@@ -11,7 +11,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,7 +25,7 @@ import com.mubarak.tmdb.ui.theme.LightGreen
 @Composable
 fun ScrollableTextTabComponent(isVisible: Boolean) {
 
-    var selectedIndex by remember { mutableIntStateOf(0) }
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
 
     val list = listOf("Streaming", "On TV", "For Rent", "In Theatres")
 
