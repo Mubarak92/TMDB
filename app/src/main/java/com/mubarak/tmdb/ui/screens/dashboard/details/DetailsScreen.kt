@@ -32,12 +32,11 @@ fun DetailsScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        DetailsTopBar(movieTitle, navigator)
+        DetailsTopBar(itemId = movieId, title = movieTitle, navigator)
 
         Column(modifier = Modifier.fillMaxSize()) {
             DetailsCard(
                 posterPath = state?.data?.posterPath,
-                movieTitle = state?.data?.title ?: state?.data?.originalTitle ?: "-",
                 backgroundPoster = state?.data?.backdropPath
             )
         }

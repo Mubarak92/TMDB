@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -40,7 +41,13 @@ fun PeopleCard(
             .height(300.dp)
             .padding(8.dp)
             .clickable {
-                navigator.navigate(PeopleDetailsScreenDestination(personId = personId, title = personName.toString()))
+                navigator.navigate(
+                    PeopleDetailsScreenDestination(
+                        personId = personId,
+                        title = personName.toString(),
+
+                        )
+                )
             }
     ) {
         Column(
@@ -85,11 +92,12 @@ fun PeopleCard(
 }
 
 
-//@Preview
-//@Composable
-//fun PresonCardPreview() {
-//    PeopleCard(
-//        "NasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasserNasser",
-//        ""
-//    )
-//}
+@Composable
+fun AlsoKnownAsItem(
+    knownAs: String
+) {
+    Card(modifier = Modifier.fillMaxWidth().padding(16.dp)) {
+        Text(text = knownAs, color = Color.White)
+
+    }
+}

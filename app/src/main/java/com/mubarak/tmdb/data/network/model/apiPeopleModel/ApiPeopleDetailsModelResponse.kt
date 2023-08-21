@@ -2,6 +2,8 @@ package com.mubarak.tmdb.data.network.model.apiPeopleModel
 
 import com.google.gson.annotations.SerializedName
 import com.mubarak.tmdb.data.domain.model.peopleModel.PeopleDetailsModel
+import java.io.Serializable
+
 
 data class ApiPeopleDetailsModelResponse(
     @SerializedName("adult")
@@ -13,11 +15,11 @@ data class ApiPeopleDetailsModelResponse(
     @SerializedName("birthday")
     val birthday: String,
     @SerializedName("deathday")
-    val deathday: String,
+    val deathday: String? = null,
     @SerializedName("gender")
     val gender: Int,
     @SerializedName("homepage")
-    val homepage: String,
+    val homepage: String? = null,
     @SerializedName("id")
     val id: Int,
     @SerializedName("imdb_id")
@@ -32,10 +34,23 @@ data class ApiPeopleDetailsModelResponse(
     val popularity: Double,
     @SerializedName("profile_path")
     val profilePath: String
-){
+): Serializable {
     companion object {
         fun ApiPeopleDetailsModelResponse.toUiPeopleDetails() = PeopleDetailsModel(
-            adult, alsoKnownAs, biography, birthday, deathday, gender, homepage, id, imdbId, knownForDepartment, name, placeOfBirth, popularity, profilePath
+            adult = adult,
+            alsoKnownAs = alsoKnownAs,
+            biography = biography,
+            birthday = birthday,
+            deathday = deathday,
+            gender = gender,
+            homepage = homepage,
+            id = id,
+            imdbId = imdbId,
+            knownForDepartment = knownForDepartment,
+            name = name,
+            placeOfBirth = placeOfBirth,
+            popularity = popularity,
+            profilePath = profilePath
         )
     }
 }

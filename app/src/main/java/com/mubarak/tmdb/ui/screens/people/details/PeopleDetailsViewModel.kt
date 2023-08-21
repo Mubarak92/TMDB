@@ -34,7 +34,7 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
             .catch {
                 _viewState.emit(
                     PeopleDetailsViewState(
-                        error = _viewState.value?.error ?: throw Exception()
+                        error2 = it
                     )
                 )
             }

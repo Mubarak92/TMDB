@@ -22,7 +22,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
@@ -35,7 +34,6 @@ import com.skydoves.landscapist.transformation.blur.BlurTransformationPlugin
 
 @Composable
 fun DetailsCard(
-    movieTitle: String?,
     posterPath: String?,
     backgroundPoster: String?,
     modifier: Modifier = Modifier
@@ -55,7 +53,6 @@ fun DetailsCard(
                     .fillMaxSize()
                     .alpha(0.2f)
                     .background(color = Color(it?.lightVibrantSwatch?.rgb ?: 0))
-                    .fillMaxSize()
             )
         }
 
@@ -71,7 +68,7 @@ fun DetailsCard(
                     .alpha(0.2f),
                 component = rememberImageComponent {
                     +BlurTransformationPlugin(radius = 5)
-                    +CrossfadePlugin(duration = 550)
+                    +CrossfadePlugin(duration = 1000)
                 },
             )
 
@@ -108,10 +105,4 @@ fun DetailsCard(
             }
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewDetailsCard() {
-    DetailsCard("Title", "", "")
 }

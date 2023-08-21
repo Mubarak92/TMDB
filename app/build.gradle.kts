@@ -63,6 +63,8 @@ android {
 dependencies {
     implementation ("androidx.core:core-ktx:1.10.1")
     implementation ("androidx.compose.ui:ui:1.5.0")
+    implementation ("androidx.preference:preference-ktx:1.2.1")
+    implementation ("androidx.compose.foundation:foundation:1.5.0")
     implementation ("androidx.compose.material:material:1.5.0")
     implementation ("androidx.compose.ui:ui-tooling-preview:1.5.0")
     implementation ("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
@@ -139,7 +141,6 @@ dependencies {
     ksp ("io.github.raamcosta.compose-destinations:ksp:1.9.52")
 
     //palette
-    implementation("androidx.palette:palette:1.0.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
 
     //landscapist
