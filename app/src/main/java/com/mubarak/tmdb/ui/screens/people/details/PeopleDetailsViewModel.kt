@@ -27,6 +27,12 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
     private val _imagesViewState = MutableStateFlow<PeopleImagesViewState?>(null)
     val imagesViewState = _imagesViewState.asStateFlow()
 
+    private val _peopleMovieCreditsViewState = MutableStateFlow<PeopleMovieCreditsViewState?>(null)
+    val peopleMovieCreditsViewState = _peopleMovieCreditsViewState.asStateFlow()
+
+    private val _peopleSocialMediaViewState = MutableStateFlow<PeopleSocialMediaViewState?>(null)
+    val peopleSocialMediaViewState = _peopleSocialMediaViewState.asStateFlow()
+
     fun getPersonDetails(
         language: String = "en-US",
         personId: Int
@@ -65,4 +71,36 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
             .launchIn(viewModelScope)
     }
 
+    fun getPersonMovieCredits(
+        personId: Int
+    ) {
+        peopleDetailsRepository.peopleMovieCredits(personId = personId)
+            .onStart { _peopleMovieCreditsViewState.emit(PeopleMovieCreditsViewState(isLoading = true)) }
+            .onEach { _peopleMovieCreditsViewState.emit(PeopleMovieCreditsViewState(data = it.cast)) }
+            .catch {
+                _peopleMovieCreditsViewState.emit(
+                    PeopleMovieCreditsViewState(
+                        error2 = it
+                    )
+                )
+            }
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
+    }
+    fun getPersonSocialMedia(
+        personId: Int
+    ) {
+        peopleDetailsRepository.peopleSocial(personId = personId)
+            .onStart { _peopleSocialMediaViewState.emit(PeopleSocialMediaViewState(isLoading = true)) }
+            .onEach { _peopleSocialMediaViewState.emit(PeopleSocialMediaViewState(data = it)) }
+            .catch {
+                _peopleSocialMediaViewState.emit(
+                    PeopleSocialMediaViewState(
+                        error2 = it
+                    )
+                )
+            }
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
+    }
 }

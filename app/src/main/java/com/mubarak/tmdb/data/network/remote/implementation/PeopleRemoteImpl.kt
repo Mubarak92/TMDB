@@ -4,6 +4,8 @@ import com.mubarak.tmdb.data.network.apis.PeopleApi
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleImagesResponse
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleMovieCredits
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleSocial
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
 import kotlinx.coroutines.flow.Flow
@@ -32,13 +34,23 @@ class PeopleRemoteImpl @Inject constructor(
         language: String
     ): Flow<ApiPeopleDetailsModelResponse> =
         flow {
-            emit(api.peopleDetails( language = "en-US", personId = personId))
+            emit(api.peopleDetails(language = "en-US", personId = personId))
         }
-
 
     override fun getPeopleImages(personId: Int): Flow<ApiPeopleImagesResponse> =
         flow {
             emit(api.peopleImages(personId))
+        }
+
+    override fun peopleMovieCredits(personId: Int): Flow<ApiPeopleMovieCredits> =
+        flow {
+            emit(api.peopleMovieCredits(personId))
+        }
+
+
+    override fun peopleSocial(personId: Int): Flow<ApiPeopleSocial> =
+        flow {
+            emit(api.peopleSocialAccount(personId))
         }
 }
 

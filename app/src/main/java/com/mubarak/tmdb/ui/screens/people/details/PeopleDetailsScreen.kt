@@ -1,5 +1,6 @@
 package com.mubarak.tmdb.ui.screens.people.details
 
+import android.util.Log
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.clickable
@@ -34,6 +35,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
 import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
+import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
+import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.people.component.AlsoKnownAsItem
 import com.mubarak.tmdb.ui.screens.people.component.PeopleImages
 import com.ramcosta.composedestinations.annotation.Destination
@@ -50,8 +53,9 @@ fun PeopleDetailsScreen(
 ) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
-
     val imagesState by viewModel.imagesViewState.collectAsStateWithLifecycle()
+    val peopleMovieCreditsViewState by viewModel.peopleMovieCreditsViewState.collectAsStateWithLifecycle()
+    val peopleSocialMediaViewState by viewModel.peopleSocialMediaViewState.collectAsStateWithLifecycle()
 
     val imageUrl = Constant.BASE_POSTER_URL + state?.data?.profilePath
     var showMore by remember { mutableStateOf(false) }
@@ -61,6 +65,14 @@ fun PeopleDetailsScreen(
     }
     LaunchedEffect(null) {
         viewModel.getPersonImages(personId = personId)
+    }
+    LaunchedEffect(null) {
+        Log.e("working", "PeopleDetailsScreen: ")
+        viewModel.getPersonMovieCredits(personId = personId)
+    }
+    LaunchedEffect(null) {
+        Log.e("working", "PeopleDetailsScreen: ")
+        viewModel.getPersonSocialMedia(personId = personId)
     }
 
     Column(
@@ -129,9 +141,28 @@ fun PeopleDetailsScreen(
         }
 
         LazyRow(content = {
+            items(peopleMovieCreditsViewState?.data.orEmpty()) { item ->
+                MovieCard(
+                    item.title ?: item.originalTitle ?: "-",
+                    item.posterPath,
+                    modifier = Modifier.clickable {
+                        navigator.navigate(
+                            DetailsScreenDestination(
+                                id = 2,
+                                movieId = item.id,
+                                movieTitle = item.title ?: item.originalTitle,
+                                pathType = "movie",
+                                )
+                        )
+                    })
+            }
+        })
+
+        LazyRow(content = {
             items(imagesState?.data.orEmpty()) { item ->
                 PeopleImages(item?.filePath)
             }
         })
+
     }
 }

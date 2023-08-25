@@ -4,6 +4,8 @@ import com.mubarak.tmdb.domain.repository.IPeopleRepository
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleImagesResponse
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleMovieCredits
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleSocial
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -30,4 +32,11 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleRemote: IPeople
     override fun getPeopleImages(personId: Int): Flow<ApiPeopleImagesResponse> =
         peopleRemote.getPeopleImages(personId)
 
+
+    override fun peopleMovieCredits(personId: Int): Flow<ApiPeopleMovieCredits> =
+        peopleRemote.peopleMovieCredits(personId)
+
+
+    override fun peopleSocial(personId: Int): Flow<ApiPeopleSocial> =
+        peopleRemote.peopleSocial(personId)
 }
