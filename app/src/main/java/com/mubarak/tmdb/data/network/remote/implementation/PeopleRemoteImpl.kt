@@ -2,6 +2,7 @@ package com.mubarak.tmdb.data.network.remote.implementation
 
 import com.mubarak.tmdb.data.network.apis.PeopleApi
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleImagesResponse
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleModelResponse
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
 import com.mubarak.tmdb.data.network.retrofit.RetrofitClient
@@ -32,6 +33,12 @@ class PeopleRemoteImpl @Inject constructor(
     ): Flow<ApiPeopleDetailsModelResponse> =
         flow {
             emit(api.peopleDetails( language = "en-US", personId = personId))
+        }
+
+
+    override fun getPeopleImages(personId: Int): Flow<ApiPeopleImagesResponse> =
+        flow {
+            emit(api.peopleImages(personId))
         }
 }
 

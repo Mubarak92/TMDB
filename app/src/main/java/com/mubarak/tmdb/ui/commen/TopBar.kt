@@ -49,11 +49,9 @@ fun TopBar(
                     Icon(
                         painter = rememberAsyncImagePainter(com.google.android.material.R.drawable.ic_search_black_24),
                         contentDescription = "Image",
-                        modifier = Modifier
-                            .clickable {
+                        modifier = Modifier.clickable {
                                 navigator.navigate(SearchScreenDestination)
-                            }
-                            .padding(horizontal = 8.dp),
+                            }.padding(horizontal = 8.dp),
                         tint = LightGreen
                     )
                 }

@@ -1,6 +1,6 @@
-package com.mubarak.tmdb.data.domain.implementation
+package com.mubarak.tmdb.domain.implementation
 
-import com.mubarak.tmdb.data.domain.repository.IMovieRepository
+import com.mubarak.tmdb.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse
 import com.mubarak.tmdb.data.network.remote.IMovieRemote
 import kotlinx.coroutines.flow.Flow
@@ -8,7 +8,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MovieRepositoryImpl @Inject constructor(private val movieRemote: IMovieRemote) : IMovieRepository {
+class MovieRepositoryImpl @Inject constructor(private val movieRemote: IMovieRemote) :
+    IMovieRepository {
 
     override fun getPopularMovies(pageNumber: Int, genres: Int,language: String): Flow<ApiMovieModelResponse> =
         movieRemote.getPopularMovies(pageNumber, genres,language)

@@ -39,10 +39,7 @@ fun MainScreen(
         TopBar(navigator,true)
         TabRowComponent()
 
-        Column(
-            Modifier
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())) {
+        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
             MainMovieListLazyRow(state, navigator, viewModel, "Trending Now", false)
             MainMovieListLazyRow(state, navigator, viewModel, "What's New",true)
 
@@ -68,6 +65,5 @@ fun MainScreen(
                 }
             }
         }
-
     }
 }

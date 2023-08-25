@@ -1,6 +1,6 @@
 package com.mubarak.tmdb.ui.screens.dashboard.details
 
-import com.mubarak.tmdb.data.domain.model.movieModel.MovieDetailsItem
+import com.mubarak.tmdb.domain.model.movieModel.MovieDetailsItem
 
 data class DetailsScreenViewState(
     val isLoading: Boolean = false,

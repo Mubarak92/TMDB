@@ -1,8 +1,8 @@
 package com.mubarak.tmdb.data.network.model.apiPeopleModel
 
 import com.google.gson.annotations.SerializedName
-import com.mubarak.tmdb.data.domain.model.peopleModel.PeopleKnownForItem
-import com.mubarak.tmdb.data.domain.model.peopleModel.PeopleResultsItem
+import com.mubarak.tmdb.domain.model.peopleModel.PeopleKnownForItem
+import com.mubarak.tmdb.domain.model.peopleModel.PeopleResultsItem
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleKnownFor.Companion.toUiPeopleKnownFor
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleResult.Companion.toUiPeopleResult
 import java.io.Serializable

@@ -2,7 +2,7 @@ package com.mubarak.tmdb.ui.screens.dashboard.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mubarak.tmdb.data.domain.repository.IDetailsRepository
+import com.mubarak.tmdb.domain.repository.IDetailsRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieDetailsModelResponse.Companion.toUiDetails
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

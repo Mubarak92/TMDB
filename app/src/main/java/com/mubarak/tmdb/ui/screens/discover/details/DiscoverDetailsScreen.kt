@@ -19,7 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.data.domain.model.movieModel.MovieItem
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.commen.TopBar
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent

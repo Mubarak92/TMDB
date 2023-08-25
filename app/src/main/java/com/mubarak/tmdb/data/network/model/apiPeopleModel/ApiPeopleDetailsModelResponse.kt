@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.network.model.apiPeopleModel
 
 import com.google.gson.annotations.SerializedName
-import com.mubarak.tmdb.data.domain.model.peopleModel.PeopleDetailsModel
+import com.mubarak.tmdb.domain.model.peopleModel.PeopleDetailsModel
 import java.io.Serializable
 
 

@@ -13,7 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.data.domain.model.peopleModel.PeopleResultsItem
+import com.mubarak.tmdb.domain.model.peopleModel.PeopleResultsItem
 import com.mubarak.tmdb.ui.screens.people.component.PeopleCard
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

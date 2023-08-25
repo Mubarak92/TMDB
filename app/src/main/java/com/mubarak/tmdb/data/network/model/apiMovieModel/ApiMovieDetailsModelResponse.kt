@@ -1,7 +1,7 @@
 package com.mubarak.tmdb.data.network.model.apiMovieModel
 
 import com.google.gson.annotations.SerializedName
-import com.mubarak.tmdb.data.domain.model.movieModel.MovieDetailsItem
+import com.mubarak.tmdb.domain.model.movieModel.MovieDetailsItem
 import java.io.Serializable
 
 data class ApiMovieDetailsModelResponse(

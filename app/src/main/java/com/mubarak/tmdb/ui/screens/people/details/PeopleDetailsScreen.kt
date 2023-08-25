@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -34,6 +35,7 @@ import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
 import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
 import com.mubarak.tmdb.ui.screens.people.component.AlsoKnownAsItem
+import com.mubarak.tmdb.ui.screens.people.component.PeopleImages
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.skydoves.landscapist.coil.CoilImage
@@ -45,15 +47,20 @@ fun PeopleDetailsScreen(
     title: String,
     navigator: DestinationsNavigator,
     viewModel: PeopleDetailsViewModel = hiltViewModel()
-//    list: List<String> = listOf("ABC", "123", "xyz")
 ) {
 
     val state by viewModel.viewState.collectAsStateWithLifecycle()
+
+    val imagesState by viewModel.imagesViewState.collectAsStateWithLifecycle()
+
     val imageUrl = Constant.BASE_POSTER_URL + state?.data?.profilePath
     var showMore by remember { mutableStateOf(false) }
 
     LaunchedEffect(null) {
         viewModel.getPersonDetails(personId = personId)
+    }
+    LaunchedEffect(null) {
+        viewModel.getPersonImages(personId = personId)
     }
 
     Column(
@@ -61,7 +68,7 @@ fun PeopleDetailsScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        DetailsTopBar(itemId = personId ,title = title, navigator)
+        DetailsTopBar(itemId = personId, title = title, navigator)
 
         Row(modifier = Modifier.fillMaxWidth()) {
 
@@ -81,15 +88,17 @@ fun PeopleDetailsScreen(
                     }
                 },
             )
+            Column {
 
-            LazyColumn(modifier = Modifier
-                .fillMaxWidth()
-                .height(300.dp), content = {
-                items(state?.data?.alsoKnownAs ?: emptyList()) { item ->
-                    AlsoKnownAsItem(knownAs = item)
-                }
-            })
-
+                Text(text = "Also Known As:", modifier = Modifier.padding(top = 8.dp))
+                LazyColumn(modifier = Modifier
+                    .fillMaxWidth()
+                    .height(300.dp), content = {
+                    items(state?.data?.alsoKnownAs ?: emptyList()) { item ->
+                        AlsoKnownAsItem(knownAs = item)
+                    }
+                })
+            }
         }
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(modifier = Modifier
@@ -118,5 +127,11 @@ fun PeopleDetailsScreen(
 
             }
         }
+
+        LazyRow(content = {
+            items(imagesState?.data.orEmpty()) { item ->
+                PeopleImages(item?.filePath)
+            }
+        })
     }
 }

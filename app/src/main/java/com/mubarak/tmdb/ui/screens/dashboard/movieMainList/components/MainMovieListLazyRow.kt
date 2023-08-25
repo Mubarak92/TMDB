@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.mubarak.tmdb.data.domain.model.movieModel.MovieItem
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.MoviesListViewModel
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.MovieListViewState

@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.domain.model.movieModel
+package com.mubarak.tmdb.domain.model.movieModel
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

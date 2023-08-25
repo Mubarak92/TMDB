@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.data.domain.repository
+package com.mubarak.tmdb.domain.repository
 
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieDetailsModelResponse
 import kotlinx.coroutines.flow.Flow

@@ -1,6 +1,6 @@
-package com.mubarak.tmdb.data.domain.implementation
+package com.mubarak.tmdb.domain.implementation
 
-import com.mubarak.tmdb.data.domain.repository.IDetailsRepository
+import com.mubarak.tmdb.domain.repository.IDetailsRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieDetailsModelResponse
 import com.mubarak.tmdb.data.network.remote.IDetailsRemote
 import kotlinx.coroutines.flow.Flow

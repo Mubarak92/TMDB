@@ -2,7 +2,7 @@ package com.mubarak.tmdb.ui.screens.discover.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mubarak.tmdb.data.domain.repository.IMovieRepository
+import com.mubarak.tmdb.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse.Companion.toUiMovieList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

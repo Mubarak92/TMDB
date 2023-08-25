@@ -2,8 +2,9 @@ package com.mubarak.tmdb.ui.screens.people.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mubarak.tmdb.data.domain.repository.IPeopleRepository
+import com.mubarak.tmdb.domain.repository.IPeopleRepository
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse.Companion.toUiPeopleDetails
+import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleImagesResponse.Companion.toUiPeopleImagesList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -23,11 +24,15 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
     private val _viewState = MutableStateFlow<PeopleDetailsViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
+    private val _imagesViewState = MutableStateFlow<PeopleImagesViewState?>(null)
+    val imagesViewState = _imagesViewState.asStateFlow()
+
     fun getPersonDetails(
         language: String = "en-US",
         personId: Int
     ) {
         peopleDetailsRepository.getPeopleDetails(language = language, personId = personId)
+
             .onStart { _viewState.emit(PeopleDetailsViewState(isLoading = true)) }
             .map { it.toUiPeopleDetails() }
             .onEach { _viewState.emit(PeopleDetailsViewState(data = it)) }
@@ -41,4 +46,23 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
             .flowOn(Dispatchers.IO)
             .launchIn(viewModelScope)
     }
+
+    fun getPersonImages(
+        personId: Int
+    ) {
+        peopleDetailsRepository.getPeopleImages(personId = personId)
+            .onStart { _imagesViewState.emit(PeopleImagesViewState(isLoading = true)) }
+            .map { it.toUiPeopleImagesList() }
+            .onEach { _imagesViewState.emit(PeopleImagesViewState(data = it)) }
+            .catch {
+                _imagesViewState.emit(
+                    PeopleImagesViewState(
+                        error2 = it
+                    )
+                )
+            }
+            .flowOn(Dispatchers.IO)
+            .launchIn(viewModelScope)
+    }
+
 }

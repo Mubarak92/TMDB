@@ -2,7 +2,7 @@ package com.mubarak.tmdb.ui.screens.dashboard.movieMainList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mubarak.tmdb.data.domain.repository.IMovieRepository
+import com.mubarak.tmdb.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse.Companion.toUiMovieList
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -17,8 +17,7 @@ import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesListViewModel @Inject constructor(private val movieRepository: IMovieRepository) :
-    ViewModel() {
+class MoviesListViewModel @Inject constructor(private val movieRepository: IMovieRepository) :ViewModel() {
 
     var currentType = "movie"
 
