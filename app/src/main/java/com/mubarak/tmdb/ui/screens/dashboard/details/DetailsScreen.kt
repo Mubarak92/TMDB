@@ -42,7 +42,8 @@ fun DetailsScreen(
             DetailsCard(
                 posterPath = state?.data?.posterPath,
                 backgroundPoster = state?.data?.backdropPath,
-                voteAverage = voteAverage
+                voteAverage = voteAverage,
+                genreList = state?.data?.genres
             )
 
         }

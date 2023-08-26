@@ -120,7 +120,11 @@ fun PeopleDetailsScreen(
 
         PeopleSocialMedia(peopleSocialMediaViewState)
 
-        Card(modifier = Modifier.fillMaxWidth().padding(4.dp)) {
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(4.dp)
+        ) {
             Row(modifier = Modifier.fillMaxWidth()) {
                 Column(modifier = Modifier
                     .animateContentSize(animationSpec = tween(100))
@@ -160,8 +164,12 @@ fun PeopleDetailsScreen(
 fun PeopleSocialMedia(peopleSocialMediaViewState: PeopleSocialMediaViewState?) {
     val uriHandler = LocalUriHandler.current
 
-    Card(modifier = Modifier.padding(4.dp).fillMaxWidth()) {
-        Row (horizontalArrangement = Arrangement.Center){
+    Card(
+        modifier = Modifier
+            .padding(4.dp)
+            .fillMaxWidth()
+    ) {
+        Row(horizontalArrangement = Arrangement.Center) {
             if (!peopleSocialMediaViewState?.data?.imdbId.isNullOrEmpty()) {
 
                 Image(
@@ -203,30 +211,32 @@ fun PeopleSocialMedia(peopleSocialMediaViewState: PeopleSocialMediaViewState?) {
                         .width(54.dp)
                 )
             }
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_twitter_x),
-                contentDescription = "imdb",
-                modifier = Modifier
-                    .clickable {
-                        uriHandler.openUri("https://twitter.com/" + peopleSocialMediaViewState?.data?.twitterId)
-                    }
-                    .padding(8.dp)
-                    .height(28.dp)
-                    .width(54.dp)
-            )
-
-            Image(
-                painter = painterResource(id = R.drawable.ic_youtube),
-                contentDescription = "imdb",
-                modifier = Modifier
-                    .clickable {
-                        uriHandler.openUri("https://www.youtube.com/user/" + peopleSocialMediaViewState?.data?.youtubeId)
-                    }
-                    .padding(8.dp)
-                    .height(28.dp)
-                    .width(54.dp)
-            )
+            if (!peopleSocialMediaViewState?.data?.twitterId.isNullOrEmpty()) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_twitter_x),
+                    contentDescription = "imdb",
+                    modifier = Modifier
+                        .clickable {
+                            uriHandler.openUri("https://twitter.com/" + peopleSocialMediaViewState?.data?.twitterId)
+                        }
+                        .padding(8.dp)
+                        .height(28.dp)
+                        .width(54.dp)
+                )
+            }
+            if (!peopleSocialMediaViewState?.data?.youtubeId.isNullOrEmpty()) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_youtube),
+                    contentDescription = "imdb",
+                    modifier = Modifier
+                        .clickable {
+                            uriHandler.openUri("https://www.youtube.com/user/" + peopleSocialMediaViewState?.data?.youtubeId)
+                        }
+                        .padding(8.dp)
+                        .height(28.dp)
+                        .width(54.dp)
+                )
+            }
 
         }
     }

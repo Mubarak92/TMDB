@@ -5,6 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material3.Card
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -22,8 +26,10 @@ import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
+import com.mubarak.tmdb.domain.model.movieModel.GenresItem
 import com.skydoves.landscapist.animation.crossfade.CrossfadePlugin
 import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.components.rememberImageComponent
@@ -36,6 +42,7 @@ fun DetailsCard(
     posterPath: String?,
     backgroundPoster: String?,
     voteAverage: Float?,
+    genreList :List<GenresItem?>?,
     modifier: Modifier = Modifier
 ) {
     var palette by rememberPaletteState(null)
@@ -75,8 +82,8 @@ fun DetailsCard(
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .height(300.dp)) {
-
+                    .height(300.dp)
+            ) {
                 val imageUrl = Constant.BASE_POSTER_URL + posterPath
 
                 CoilImage(
@@ -102,14 +109,25 @@ fun DetailsCard(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(top = 16.dp, start = 16.dp),
-                    verticalArrangement = Arrangement.SpaceBetween
+                        .padding(top = 16.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
 
                     CircularProgressbar(voteAverage)
-
+                    FlowRowSimpleUsageExample(genreList)
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun FlowRowSimpleUsageExample( genre :List<GenresItem?>? ) {
+    FlowRow(modifier = Modifier.padding(8.dp).fillMaxSize()) {
+        genre?.forEach{
+            GenreItem(it?.name)
         }
     }
 }
@@ -117,5 +135,13 @@ fun DetailsCard(
 @Preview
 @Composable
 fun DetailsCardPreview() {
-    DetailsCard("1", "1",1f)
+    DetailsCard("1", "1", 1f, emptyList())
+}
+@Composable
+fun GenreItem(
+    genre: String?
+) {
+    Card(modifier = Modifier.padding(2.dp) ) {
+        Text(fontSize = 16.sp,text = genre.toString(), color = Color.White, modifier = Modifier.padding(4.dp))
+    }
 }

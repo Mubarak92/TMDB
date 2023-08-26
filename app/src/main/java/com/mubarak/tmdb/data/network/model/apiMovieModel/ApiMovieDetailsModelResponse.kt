@@ -1,6 +1,8 @@
 package com.mubarak.tmdb.data.network.model.apiMovieModel
 
 import com.google.gson.annotations.SerializedName
+import com.mubarak.tmdb.data.network.model.apiMovieModel.Genre.Companion.toUiGenre
+import com.mubarak.tmdb.domain.model.movieModel.GenresItem
 import com.mubarak.tmdb.domain.model.movieModel.MovieDetailsItem
 import java.io.Serializable
 
@@ -64,7 +66,9 @@ data class ApiMovieDetailsModelResponse(
             title = title,
             backdropPath = backdropPath,
             revenue = revenue,
-            //genres = genres,
+            genres = genres.map {
+                it.toUiGenre()
+            },
             popularity = popularity,
             //	productionCountries = productionCountries,
             id = id,
@@ -104,7 +108,15 @@ data class Genre(
     val id: Int,
     @SerializedName("name")
     val name: String
-)
+) : Serializable {
+    companion object {
+        fun Genre.toUiGenre() = GenresItem(
+            id = id,
+            name = name
+        )
+    }
+
+}
 
 data class SpokenLanguage(
     @SerializedName("english_name")
