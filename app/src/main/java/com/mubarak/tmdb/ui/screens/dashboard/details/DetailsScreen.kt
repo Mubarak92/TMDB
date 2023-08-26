@@ -12,6 +12,7 @@ import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsCard
 import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlin.math.roundToInt
 
 @Destination
 @Composable
@@ -35,10 +36,15 @@ fun DetailsScreen(
         DetailsTopBar(itemId = movieId, title = movieTitle, navigator)
 
         Column(modifier = Modifier.fillMaxSize()) {
+            val voteAverage = (state?.data?.voteAverage?.times(10))?.roundToInt()?.toFloat()
+
+
             DetailsCard(
                 posterPath = state?.data?.posterPath,
-                backgroundPoster = state?.data?.backdropPath
+                backgroundPoster = state?.data?.backdropPath,
+                voteAverage = voteAverage
             )
+
         }
     }
 }

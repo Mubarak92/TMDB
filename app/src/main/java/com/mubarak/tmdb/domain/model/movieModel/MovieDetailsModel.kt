@@ -20,7 +20,7 @@ data class MovieDetailsItem(
     val spokenLanguages: List<SpokenLanguagesItem?>? = null,
     val productionCompanies: List<ProductionCompaniesItem?>? = null,
     val releaseDate: String? = null,
-    val voteAverage: Any? = null,
+    val voteAverage: Double? = null,
     val belongsToCollection: BelongsToCollection? = null,
     val tagline: String? = null,
     val adult: Boolean? = null,
