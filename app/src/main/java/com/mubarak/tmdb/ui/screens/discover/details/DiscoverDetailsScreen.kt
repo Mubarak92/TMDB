@@ -45,8 +45,6 @@ fun DiscoverDetailsScreen(
     Column(Modifier.fillMaxSize()) {
         TopBar(navigator,hasSearchIcon = false,hasTitle = true, title = discoverTitle)
 
-        TabRowComponent()
-
         Column(
             Modifier
                 .fillMaxSize()
