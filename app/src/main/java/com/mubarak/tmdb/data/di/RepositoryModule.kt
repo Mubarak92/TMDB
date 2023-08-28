@@ -1,5 +1,7 @@
 package com.mubarak.tmdb.data.di
 
+import com.mubarak.tmdb.data.local.repository.ItemsRepository
+import com.mubarak.tmdb.data.local.repository.OfflineItemsRepository
 import com.mubarak.tmdb.domain.implementation.DetailsRepositoryImpl
 import com.mubarak.tmdb.domain.implementation.MovieRepositoryImpl
 import com.mubarak.tmdb.domain.implementation.PeopleRepositoryImpl
@@ -23,4 +25,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindPeopleRepository(peopleRepositoryImpl: PeopleRepositoryImpl): IPeopleRepository
+
+    @Binds
+    abstract fun bindOfflineRepository(offlineItemsRepository: OfflineItemsRepository): ItemsRepository
 }
