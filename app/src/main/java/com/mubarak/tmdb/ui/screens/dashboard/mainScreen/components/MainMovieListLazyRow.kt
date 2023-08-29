@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components
+package com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -18,8 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.MoviesListViewModel
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.MovieListViewState
+import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.MovieListViewState
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable

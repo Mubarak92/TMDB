@@ -24,7 +24,6 @@ class FavoriteViewModel @Inject constructor(private val itemsRepository: ItemsRe
                 initialValue = FavoriteUiState()
             )
 
-
     fun removeFromFavorite(movie: MovieItem) = viewModelScope.launch(Dispatchers.IO) {
         itemsRepository.deleteItem(movie)
     }

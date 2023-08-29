@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.movieMainList
+package com.mubarak.tmdb.ui.screens.dashboard.mainScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

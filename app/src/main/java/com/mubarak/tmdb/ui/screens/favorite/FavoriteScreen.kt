@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
+import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MovieCard
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

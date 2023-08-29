@@ -39,7 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
+import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MovieCard
 import com.mubarak.tmdb.ui.screens.people.component.AlsoKnownAsItem
 import com.mubarak.tmdb.ui.screens.people.component.PeopleImages
 import com.ramcosta.composedestinations.annotation.Destination
@@ -50,7 +50,6 @@ import com.skydoves.landscapist.coil.CoilImage
 @Composable
 fun PeopleDetailsScreen(
     personId: Int,
-    title: String,
     navigator: DestinationsNavigator,
     viewModel: PeopleDetailsViewModel = hiltViewModel()
 ) {
@@ -260,11 +259,11 @@ private fun MovieCreditsLazyRow(
                 item.title ?: item.originalTitle ?: "-",
                 item.posterPath,
                 modifier = Modifier.clickable {
-                    //navigator.navigate(
+//                    navigator.navigate(
 //                        DetailsScreenDestination(
-//                         item
+//                            movieItem = item
 //                        )
-                    // )
+//                     )
                 })
         }
     })

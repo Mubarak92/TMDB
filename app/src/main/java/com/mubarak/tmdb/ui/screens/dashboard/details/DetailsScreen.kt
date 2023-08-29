@@ -43,7 +43,6 @@ fun DetailsScreen(
                 voteAverage = voteAverage,
                 genreList = state?.data?.genres
             )
-
         }
     }
 }

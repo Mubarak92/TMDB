@@ -44,8 +44,6 @@ fun PeopleCard(
                 navigator.navigate(
                     PeopleDetailsScreenDestination(
                         personId = personId,
-                        title = personName.toString(),
-
                         )
                 )
             }

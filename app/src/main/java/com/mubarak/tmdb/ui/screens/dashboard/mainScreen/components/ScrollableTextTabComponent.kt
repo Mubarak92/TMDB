@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components
+package com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background
