@@ -17,9 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mubarak.tmdb.ui.commen.TopBar
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MainMovieListLazyRow
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent
-import com.mubarak.tmdb.ui.commen.TopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -39,9 +39,12 @@ fun MainScreen(
         TopBar(navigator,true)
         TabRowComponent()
 
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState())) {
-            MainMovieListLazyRow(state, navigator, viewModel, "Trending Now", false)
-            MainMovieListLazyRow(state, navigator, viewModel, "What's New",true)
+        Column(
+            Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())) {
+            MainMovieListLazyRow(state, navigator, "Trending Now", false)
+            MainMovieListLazyRow(state, navigator, "What's New", true)
 
             if (state?.error == true) {
                 Snackbar(modifier = Modifier.padding(4.dp),
