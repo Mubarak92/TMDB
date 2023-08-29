@@ -16,7 +16,7 @@
 
 package com.mubarak.tmdb.data.local.repository
 
-import com.mubarak.tmdb.data.local.entities.MovieEntity
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -26,21 +26,21 @@ interface ItemsRepository {
     /**
      * Retrieve all the items from the the given data source.
      */
-    fun getAllItemsStream(): Flow<List<MovieEntity>>
+    fun getAllItemsStream(): Flow<List<MovieItem>>
 
     /**
      * Retrieve an item from the given data source that matches with the [id].
      */
-    fun getItemStream(id: Int): Flow<MovieEntity?>
+    fun getItemStream(id: Int): Flow<MovieItem?>
 
     /**
      * Insert item in the data source
      */
-    suspend fun insertItem(item: MovieEntity)
+    suspend fun insertItem(item: MovieItem?)
 
     /**
      * Delete item from the data source
      */
-    suspend fun deleteItem(item: MovieEntity)
+    suspend fun deleteItem(item: MovieItem)
 
 }

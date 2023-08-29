@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsCard
 import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
 import com.ramcosta.composedestinations.annotation.Destination
@@ -17,10 +18,7 @@ import kotlin.math.roundToInt
 @Destination
 @Composable
 fun DetailsScreen(
-    id: Int,
-    movieId: Int?,
-    movieTitle: String?,
-    pathType: String,
+    movieItem: MovieItem,
     viewModel: DetailsViewModel = hiltViewModel(),
     navigator: DestinationsNavigator
 ) {
@@ -28,12 +26,12 @@ fun DetailsScreen(
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
     LaunchedEffect(null) {
-        viewModel.getMovieDetails(movieId = movieId, pathType = pathType)
+        viewModel.getMovieDetails(movieId = movieItem.id)
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
 
-        DetailsTopBar(itemId = movieId, title = movieTitle, navigator)
+        DetailsTopBar(movieItem, navigator = navigator)
 
         Column(modifier = Modifier.fillMaxSize()) {
             val voteAverage = (state?.data?.voteAverage?.times(10))?.roundToInt()?.toFloat()

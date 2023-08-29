@@ -7,7 +7,6 @@ interface IDetailsRemote {
 
     fun getMovieDetails(
         language: String,
-        pathType: String,
         movieId: Int?
     ): Flow<ApiMovieDetailsModelResponse>
 }

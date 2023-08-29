@@ -3,11 +3,11 @@ package com.mubarak.tmdb.data.db
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.mubarak.tmdb.data.local.dao.MovieDao
-import com.mubarak.tmdb.data.local.entities.MovieEntity
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 
 @Database(
     entities = [
-        MovieEntity::class
+        MovieItem::class
     ],
     version = 1
 )

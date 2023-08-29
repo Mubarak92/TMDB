@@ -7,7 +7,6 @@ interface IDetailsRepository {
 
     fun getDetails(
         language: String,
-        pathType: String,
         movieId: Int?
     ): Flow<ApiMovieDetailsModelResponse>
 

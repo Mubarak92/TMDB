@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -23,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.mubarak.tmdb.R
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.screens.dashboard.details.DetailsViewModel
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightGreen
@@ -33,8 +32,7 @@ import kotlinx.coroutines.launch
 @Destination
 @Composable
 fun DetailsTopBar(
-    itemId: Int?,
-    title: String?,
+    movieItem: MovieItem?,
     navigator: DestinationsNavigator,
     viewModel: DetailsViewModel = hiltViewModel(),
 
@@ -45,7 +43,7 @@ fun DetailsTopBar(
         action = Intent.ACTION_SEND
         putExtra(
             Intent.EXTRA_TEXT,
-            "I'm currently watching $title ,link : https://www.themoviedb.org/movie/${itemId}"
+            "I'm currently watching ${movieItem?.title} ,link : https://www.themoviedb.org/movie/${movieItem?.id}"
         )
         type = "text/plain"
     }
@@ -71,10 +69,10 @@ fun DetailsTopBar(
                     tint = LightGreen
                 )
 
-                if (title != null) {
+                if (movieItem?.title != null) {
                     Text(
                         textAlign = TextAlign.Center,
-                        text = title,
+                        text = movieItem.title,
                         modifier = Modifier
                             .width(280.dp)
                             .padding(horizontal = 16.dp),
@@ -90,7 +88,9 @@ fun DetailsTopBar(
                     modifier = Modifier
                         .clickable {
                             coroutineScope.launch {
-                                viewModel.saveItem()
+
+                                    viewModel.addToMyWatchlist(movieItem)
+
                             }
                         },
                     tint = LightGreen

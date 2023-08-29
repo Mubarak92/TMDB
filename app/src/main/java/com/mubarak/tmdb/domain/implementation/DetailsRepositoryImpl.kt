@@ -13,9 +13,8 @@ class DetailsRepositoryImpl @Inject constructor(private val detailsRemote: IDeta
 
     override fun getDetails(
         language: String,
-        pathType: String,
         movieId: Int?
     ): Flow<ApiMovieDetailsModelResponse> =
-        detailsRemote.getMovieDetails(language = language, pathType = pathType, movieId = movieId)
+        detailsRemote.getMovieDetails(language = language, movieId = movieId)
 
 }

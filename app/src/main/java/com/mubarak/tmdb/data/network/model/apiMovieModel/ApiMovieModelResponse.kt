@@ -1,8 +1,8 @@
 package com.mubarak.tmdb.data.network.model.apiMovieModel
 
 import com.google.gson.annotations.SerializedName
-import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieItem.Companion.toUiMovie
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import java.io.Serializable
 
 data class ApiMovieModelResponse(
@@ -46,9 +46,6 @@ data class ApiMovieItem(
     @SerializedName("name")
     val name: String? = null,
 
-    @SerializedName("genre_ids")
-    val genreIds: List<Int?>? = null,
-
     @SerializedName("poster_path")
     val posterPath: String? = null,
 
@@ -75,21 +72,20 @@ data class ApiMovieItem(
 ) : Serializable {
     companion object {
         fun ApiMovieItem.toUiMovie() = MovieItem(
-            this.overview,
-            this.originalLanguage,
-            this.originalTitle,
-            this.video,
-            this.title,
-            this.name,
-            this.genreIds,
-            this.posterPath,
-            this.backdropPath,
-            this.releaseDate,
-            this.popularity,
-            this.voteAverage,
-            this.id,
-            this.adult,
-            this.voteCount
+            overview = this.overview,
+            originalLanguage = this.originalLanguage,
+            originalTitle = this.originalTitle,
+            video = this.video,
+            title = this.title,
+            name = this.name,
+            posterPath = this.posterPath,
+            backdropPath = this.backdropPath,
+            releaseDate = this.releaseDate,
+            popularity = this.popularity,
+            voteAverage = this.voteAverage,
+            id = this.id,
+            adult = this.adult,
+            voteCount = this.voteCount
         )
     }
 }

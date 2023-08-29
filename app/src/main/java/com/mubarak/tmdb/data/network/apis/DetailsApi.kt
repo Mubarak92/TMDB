@@ -10,7 +10,7 @@ interface DetailsApi {
 
     @GET("3/{pathType}/{movie_id}")
     suspend fun movieDetails(
-        @Path("pathType") pathType: String,
+        @Path("pathType") pathType: String = "movie",
         @Path("movie_id") movieId: Int?,
         @Query("api_key") apiKey: String = Constant.API_KEY,
         @Query("language") language: String? = "en-US",

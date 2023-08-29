@@ -26,7 +26,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun MainMovieListLazyRow(
     state: MovieListViewState?,
     navigator: DestinationsNavigator,
-    viewModel: MoviesListViewModel,
     title: String,
     hasScrollableTabs: Boolean
 ) {
@@ -50,10 +49,7 @@ fun MainMovieListLazyRow(
                         modifier = Modifier.clickable {
                             navigator.navigate(
                                 DetailsScreenDestination(
-                                    id = 1,
-                                    movieTitle = item.originalTitle,
-                                    movieId = item.id,
-                                    pathType = viewModel.currentType,
+                                    movieItem = item,
                                 )
                             )
                         },

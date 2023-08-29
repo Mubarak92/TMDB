@@ -39,9 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
-import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
-import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.mubarak.tmdb.ui.screens.people.component.AlsoKnownAsItem
 import com.mubarak.tmdb.ui.screens.people.component.PeopleImages
 import com.ramcosta.composedestinations.annotation.Destination
@@ -85,7 +83,7 @@ fun PeopleDetailsScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
     ) {
-        DetailsTopBar(itemId = personId, title = title, navigator)
+       // DetailsTopBar(itemId = personId, title = title, navigator)
 
         Row(modifier = Modifier.fillMaxWidth()) {
 
@@ -262,14 +260,11 @@ private fun MovieCreditsLazyRow(
                 item.title ?: item.originalTitle ?: "-",
                 item.posterPath,
                 modifier = Modifier.clickable {
-                    navigator.navigate(
-                        DetailsScreenDestination(
-                            id = 2,
-                            movieId = item.id,
-                            movieTitle = item.title ?: item.originalTitle,
-                            pathType = "movie",
-                        )
-                    )
+                    //navigator.navigate(
+//                        DetailsScreenDestination(
+//                         item
+//                        )
+                    // )
                 })
         }
     })

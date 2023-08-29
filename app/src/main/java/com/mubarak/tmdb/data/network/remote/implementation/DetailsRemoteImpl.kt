@@ -18,10 +18,9 @@ class DetailsRemoteImpl @Inject constructor(
 
     override fun getMovieDetails(
         language: String,
-        pathType: String,
         movieId: Int?
     ): Flow<ApiMovieDetailsModelResponse> = flow {
-        emit(api.movieDetails(language = language, pathType = pathType, movieId = movieId))
+        emit(api.movieDetails(language = language, movieId = movieId))
     }
 
 }

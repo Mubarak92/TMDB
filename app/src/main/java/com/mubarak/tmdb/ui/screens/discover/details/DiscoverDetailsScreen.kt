@@ -22,7 +22,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.commen.TopBar
 import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.MovieCard
-import com.mubarak.tmdb.ui.screens.dashboard.movieMainList.components.TabRowComponent
 import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -58,11 +57,7 @@ fun DiscoverDetailsScreen(
                             modifier = Modifier.clickable {
                                 navigator.navigate(
                                     DetailsScreenDestination(
-                                        id = 2,
-                                        movieId = item.id,
-                                        movieTitle = item.title ?: item.originalTitle,
-                                        pathType= "movie",
-
+                                       movieItem = item
                                     )
                                 )
                             },
