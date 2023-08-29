@@ -88,9 +88,7 @@ fun DetailsTopBar(
                     modifier = Modifier
                         .clickable {
                             coroutineScope.launch {
-
                                     viewModel.addToMyWatchlist(movieItem)
-
                             }
                         },
                     tint = LightGreen

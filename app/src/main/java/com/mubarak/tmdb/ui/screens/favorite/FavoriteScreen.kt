@@ -1,6 +1,7 @@
 package com.mubarak.tmdb.ui.screens.favorite
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@OptIn(ExperimentalFoundationApi::class)
 @Destination
 @Composable
 fun FavoriteScreen(
@@ -42,7 +44,9 @@ fun FavoriteScreen(
                 content = {
                     items(favoriteUiState.itemList) { item: MovieItem ->
                         MovieCard(
-                            modifier = Modifier.clickable {
+                            modifier = Modifier.combinedClickable(
+                                onLongClick = { viewModel.removeFromFavorite(item) }
+                            ) {
                                 navigator.navigate(
                                     DetailsScreenDestination(
                                         movieItem = item
