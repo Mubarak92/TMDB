@@ -2,8 +2,9 @@ package com.mubarak.tmdb.ui.screens.dashboard.mainScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.mubarak.tmdb.domain.repository.IMovieRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieModelResponse.Companion.toUiMovieList
+import com.mubarak.tmdb.domain.repository.IMovieRepository
+import com.mubarak.tmdb.ui.commen.appPref.IAppPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +18,10 @@ import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class MoviesListViewModel @Inject constructor(private val movieRepository: IMovieRepository) :ViewModel() {
+class MoviesListViewModel @Inject constructor(
+    private val movieRepository: IMovieRepository,
+    private val appPrefs: IAppPrefs
+) : ViewModel() {
 
     var currentType = "movie"
 
@@ -29,10 +33,9 @@ class MoviesListViewModel @Inject constructor(private val movieRepository: IMovi
     }
 
     fun getMovieList(
-        language: String = "en-US",
         pathType: String = currentType
     ) {
-        movieRepository.getTrendingNow(language, pathType)
+        movieRepository.getTrendingNow(appPrefs.locale, pathType)
             .onStart { _viewState.emit(MovieListViewState(isLoading = true)) }
             .map { it.toUiMovieList() }
             .onEach { _viewState.emit(MovieListViewState(data = it.orEmpty())) }

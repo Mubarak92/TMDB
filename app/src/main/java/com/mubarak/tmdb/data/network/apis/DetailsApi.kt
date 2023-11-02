@@ -13,6 +13,6 @@ interface DetailsApi {
         @Path("pathType") pathType: String = "movie",
         @Path("movie_id") movieId: Int?,
         @Query("api_key") apiKey: String = Constant.API_KEY,
-        @Query("language") language: String? = "en-US",
+        @Query("language") language: String,
     ): ApiMovieDetailsModelResponse
 }

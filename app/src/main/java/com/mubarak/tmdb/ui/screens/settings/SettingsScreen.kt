@@ -2,12 +2,25 @@ package com.mubarak.tmdb.ui.screens.settings
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.res.Configuration
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
+import com.mubarak.tmdb.MainActivity
 import com.ramcosta.composedestinations.annotation.Destination
 import java.util.Locale
 
@@ -15,12 +28,19 @@ import java.util.Locale
 @Composable
 fun SettingsScreen() {
     val context = LocalContext.current as Activity
+    val intent = Intent(context, MainActivity::class.java)
+    var isLoading by remember { mutableStateOf(false) }
 
-
-    Column {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Button(onClick = {
             LocaleManager.setLocale(context, "ar")
-            context.recreate()
+            isLoading = isLoading.not()
+            context.startActivity(intent)
+            context.finish()
         }) {
             Text(text = "Arabic")
 
@@ -28,15 +48,28 @@ fun SettingsScreen() {
 
         Button(onClick = {
             LocaleManager.setLocale(context, "en-US")
-            context.recreate()
+            isLoading = isLoading.not()
+            context.startActivity(intent)
+            context.finish()
 
         }) {
             Text(text = "English")
         }
+        if (isLoading) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        }
+
     }
 }
 
 
+@Preview
+@Composable
+fun SettingsScreenPreView() {
+    SettingsScreen()
+}
 
 object LocaleManager {
      const val PREF_SELECTED_LANGUAGE = "selected_language"

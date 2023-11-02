@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.mubarak.tmdb.domain.repository.IPeopleRepository
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleDetailsModelResponse.Companion.toUiPeopleDetails
 import com.mubarak.tmdb.data.network.model.apiPeopleModel.ApiPeopleImagesResponse.Companion.toUiPeopleImagesList
+import com.mubarak.tmdb.ui.commen.appPref.IAppPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +19,10 @@ import kotlinx.coroutines.flow.onStart
 import javax.inject.Inject
 
 @HiltViewModel
-class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsRepository: IPeopleRepository) :
+class PeopleDetailsViewModel @Inject constructor(
+    private val peopleDetailsRepository: IPeopleRepository,
+    private val appPrefs: IAppPrefs
+) :
     ViewModel() {
 
     private val _viewState = MutableStateFlow<PeopleDetailsViewState?>(null)
@@ -34,10 +38,9 @@ class PeopleDetailsViewModel @Inject constructor(private val peopleDetailsReposi
     val peopleSocialMediaViewState = _peopleSocialMediaViewState.asStateFlow()
 
     fun getPersonDetails(
-        language: String = "en-US",
         personId: Int
     ) {
-        peopleDetailsRepository.getPeopleDetails(language = language, personId = personId)
+        peopleDetailsRepository.getPeopleDetails(language = appPrefs.locale, personId = personId)
 
             .onStart { _viewState.emit(PeopleDetailsViewState(isLoading = true)) }
             .map { it.toUiPeopleDetails() }

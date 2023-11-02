@@ -26,7 +26,7 @@ class PeopleRemoteImpl @Inject constructor(
         totalPages: Int
     ): Flow<ApiPeopleModelResponse> =
         flow {
-            emit(api.trendingPeople(page = page, language = "en-US", totalPages = totalPages))
+            emit(api.trendingPeople(page = page, language = language, totalPages = totalPages))
         }
 
     override fun getPeopleDetails(
@@ -34,7 +34,7 @@ class PeopleRemoteImpl @Inject constructor(
         language: String
     ): Flow<ApiPeopleDetailsModelResponse> =
         flow {
-            emit(api.peopleDetails(language = "en-US", personId = personId))
+            emit(api.peopleDetails(language = language, personId = personId))
         }
 
     override fun getPeopleImages(personId: Int): Flow<ApiPeopleImagesResponse> =

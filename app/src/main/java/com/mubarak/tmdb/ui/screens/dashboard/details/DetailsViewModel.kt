@@ -6,6 +6,7 @@ import com.mubarak.tmdb.data.local.repository.ItemsRepository
 import com.mubarak.tmdb.data.network.model.apiMovieModel.ApiMovieDetailsModelResponse.Companion.toUiDetails
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.domain.repository.IDetailsRepository
+import com.mubarak.tmdb.ui.commen.appPref.IAppPrefs
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,17 +23,17 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val detailsRepository: IDetailsRepository,
-    private val itemsRepository: ItemsRepository
+    private val itemsRepository: ItemsRepository,
+    private val appPrefs: IAppPrefs
 ) : ViewModel() {
 
     private val _viewState = MutableStateFlow<DetailsScreenViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
     fun getMovieDetails(
-        language: String = "en-US",
         movieId: Int?
     ) {
-        detailsRepository.getDetails(language, movieId)
+        detailsRepository.getDetails(appPrefs.locale, movieId)
             .onStart { _viewState.emit(DetailsScreenViewState(isLoading = true)) }
             .map { it.toUiDetails() }
             .onEach { _viewState.emit(DetailsScreenViewState(data = it)) }
