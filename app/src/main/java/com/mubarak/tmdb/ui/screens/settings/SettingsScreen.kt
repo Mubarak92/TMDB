@@ -1,5 +1,6 @@
 package com.mubarak.tmdb.ui.screens.settings
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
@@ -13,14 +14,23 @@ import java.util.Locale
 @Destination
 @Composable
 fun SettingsScreen() {
-    val context = LocalContext.current
+    val context = LocalContext.current as Activity
+
 
     Column {
-        Button(onClick = { LocaleManager.setLocale(context, "ar") }) {
+        Button(onClick = {
+            LocaleManager.setLocale(context, "ar")
+            context.recreate()
+        }) {
             Text(text = "Arabic")
+
         }
 
-        Button(onClick = { LocaleManager.setLocale(context, "en-US") }) {
+        Button(onClick = {
+            LocaleManager.setLocale(context, "en-US")
+            context.recreate()
+
+        }) {
             Text(text = "English")
         }
     }

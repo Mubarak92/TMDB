@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.core.view.WindowCompat
+import com.mubarak.tmdb.ui.screens.settings.LocaleManager
 
 private val DarkColorScheme = darkColorScheme(
     primary = DarkBlue,
@@ -47,9 +47,11 @@ fun TMDBTheme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val context = LocalContext.current
+    val savedLocale = LocaleManager.getSavedLocale(context)
+
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
@@ -65,11 +67,10 @@ fun TMDBTheme(
         }
     }
 
-
     CompositionLocalProvider(
-        LocalLayoutDirection provides if (LocalConfiguration.current.layoutDirection == LayoutDirection.Rtl.ordinal) LayoutDirection.Rtl else LayoutDirection.Ltr,
-
-
+        LocalLayoutDirection provides
+                if (savedLocale.toLanguageTag() == "ar") LayoutDirection.Rtl
+                else LayoutDirection.Ltr
     ) {
         MaterialTheme(
             colorScheme = colorScheme,
