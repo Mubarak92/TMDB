@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.details.components
+package com.mubarak.tmdb.ui.screens.dashboard.movies.details.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween

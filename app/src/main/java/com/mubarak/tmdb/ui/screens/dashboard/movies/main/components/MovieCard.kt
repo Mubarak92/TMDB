@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box

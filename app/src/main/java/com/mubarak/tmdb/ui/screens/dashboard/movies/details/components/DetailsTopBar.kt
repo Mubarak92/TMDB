@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.details.components
+package com.mubarak.tmdb.ui.screens.dashboard.movies.details.components
 
 import android.content.Intent
 import androidx.compose.foundation.clickable
@@ -22,7 +22,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
-import com.mubarak.tmdb.ui.screens.dashboard.details.DetailsViewModel
+import com.mubarak.tmdb.ui.screens.dashboard.movies.details.MoviesDetailsViewModel
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightGreen
 import com.ramcosta.composedestinations.annotation.Destination
@@ -34,7 +34,7 @@ import kotlinx.coroutines.launch
 fun DetailsTopBar(
     movieItem: MovieItem?,
     navigator: DestinationsNavigator,
-    viewModel: DetailsViewModel = hiltViewModel(),
+    viewModel: MoviesDetailsViewModel = hiltViewModel(),
 
     ) {
     val coroutineScope = rememberCoroutineScope()

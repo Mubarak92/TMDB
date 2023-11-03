@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.moviesMainScreen
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,8 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.MoviesListViewModel
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MainMovieListLazyRow
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.components.MainMovieListLazyRow
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 

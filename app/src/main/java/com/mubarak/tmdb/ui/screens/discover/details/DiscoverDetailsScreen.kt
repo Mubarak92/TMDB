@@ -21,8 +21,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import com.mubarak.tmdb.ui.commen.TopBar
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MovieCard
-import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.components.MovieCard
+import com.mubarak.tmdb.ui.screens.destinations.MoviesDetailsScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -56,7 +56,7 @@ fun DiscoverDetailsScreen(
                         MovieCard(
                             modifier = Modifier.clickable {
                                 navigator.navigate(
-                                    DetailsScreenDestination(
+                                    MoviesDetailsScreenDestination(
                                         movieItem = item
                                     )
                                 )

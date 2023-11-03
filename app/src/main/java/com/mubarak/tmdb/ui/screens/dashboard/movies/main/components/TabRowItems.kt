@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,8 +19,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mubarak.tmdb.R
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.MoviesListViewModel
-import com.mubarak.tmdb.ui.screens.dashboard.moviesMainScreen.MoviesScreen
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.MoviesListViewModel
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.MoviesScreen
 import com.mubarak.tmdb.ui.screens.settings.SettingsScreen
 import com.mubarak.tmdb.ui.theme.DarkBlue
 import com.mubarak.tmdb.ui.theme.LightBlue
@@ -31,7 +31,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun TabRowComponent(
     navigator: DestinationsNavigator,
-    viewModel: MoviesListViewModel = hiltViewModel(),
     pagerState: PagerState
 ) {
     val tabIndex = pagerState.currentPage

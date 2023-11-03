@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -17,8 +17,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
-import com.mubarak.tmdb.ui.screens.destinations.DetailsScreenDestination
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.MovieListViewState
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.MovieListViewState
+import com.mubarak.tmdb.ui.screens.destinations.MoviesDetailsScreenDestination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
@@ -47,7 +47,7 @@ fun MainMovieListLazyRow(
                     MovieCard(
                         modifier = Modifier.clickable {
                             navigator.navigate(
-                                DetailsScreenDestination(
+                                MoviesDetailsScreenDestination(
                                     movieItem = item,
                                 )
                             )
