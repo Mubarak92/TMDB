@@ -17,8 +17,8 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun MoviesScreen(
     navigator: DestinationsNavigator,
-    viewModel: MoviesListViewModel = hiltViewModel()
-) {
+    viewModel: MoviesListViewModel = hiltViewModel(),
+    ) {
     val state by viewModel.viewState.collectAsStateWithLifecycle()
 
     Column(modifier = Modifier

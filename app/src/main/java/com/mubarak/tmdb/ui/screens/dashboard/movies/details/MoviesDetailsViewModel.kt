@@ -30,6 +30,9 @@ class MoviesDetailsViewModel @Inject constructor(
     private val _viewState = MutableStateFlow<MoviesDetailsScreenViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
+    private val _itemViewState = MutableStateFlow(false)
+    val itemViewState = _itemViewState.asStateFlow()
+
     fun getMovieDetails(
         movieId: Int?
     ) {
@@ -51,4 +54,16 @@ class MoviesDetailsViewModel @Inject constructor(
     fun addToMyWatchlist(movie: MovieItem?) = viewModelScope.launch(Dispatchers.IO) {
         itemsRepository.insertItem(movie)
     }
+
+    fun removeFromFavorite(movie: MovieItem) = viewModelScope.launch(Dispatchers.IO) {
+        itemsRepository.deleteItem(movie)
+    }
+
+    fun checkIfItemIsExists(movie: MovieItem) = itemsRepository.isExists(movie.id)
+        .onEach {
+            _itemViewState.emit(it)
+        }.flowOn(Dispatchers.IO)
+        .launchIn(viewModelScope)
+
+
 }

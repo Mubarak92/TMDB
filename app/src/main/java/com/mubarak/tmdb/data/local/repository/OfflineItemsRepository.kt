@@ -12,10 +12,8 @@ class OfflineItemsRepository @Inject constructor(db: AppDataBase) : ItemsReposit
     private val movieDao = db.movieDao()
 
     override fun getAllItemsStream(): Flow<List<MovieItem>> = movieDao.getAllMovies()
-
     override fun getItemStream(id: Int): Flow<MovieItem?> = movieDao.getItem(id)
-
+    override fun isExists(id: Int): Flow<Boolean> = movieDao.isExists(id)
     override suspend fun insertItem(item: MovieItem?) = movieDao.insert(item)
-
     override suspend fun deleteItem(item: MovieItem) = movieDao.delete(item)
 }

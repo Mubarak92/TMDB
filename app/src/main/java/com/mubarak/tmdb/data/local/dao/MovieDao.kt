@@ -17,6 +17,9 @@ interface MovieDao {
     @Query("SELECT * from movies_table WHERE id = :id")
     fun getItem(id: Int): Flow<MovieItem>
 
+    @Query("SELECT EXISTS (SELECT 1 FROM movies_table WHERE id = :id)")
+    fun isExists(id: Int): Flow<Boolean>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(item: MovieItem?)
 

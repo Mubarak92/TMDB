@@ -11,7 +11,11 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -19,6 +23,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
@@ -37,7 +42,11 @@ fun DetailsTopBar(
     viewModel: MoviesDetailsViewModel = hiltViewModel(),
 
     ) {
+
+    val state by viewModel.itemViewState.collectAsStateWithLifecycle()
+
     val coroutineScope = rememberCoroutineScope()
+    var isFavoriteSelected by remember { mutableStateOf(state) }
 
     val sendIntent: Intent = Intent().apply {
         action = Intent.ACTION_SEND
@@ -64,7 +73,7 @@ fun DetailsTopBar(
                     contentDescription = "Image",
                     modifier = Modifier
                         .clickable {
-                           navigator.navigateUp()
+                            navigator.navigateUp()
                         },
                     tint = LightGreen
                 )
@@ -82,14 +91,27 @@ fun DetailsTopBar(
                     )
                 }
 
+
                 Icon(
-                    painter = rememberAsyncImagePainter(R.drawable.ic_heart),
+                    painter = if (isFavoriteSelected)
+                        rememberAsyncImagePainter(
+                            R.drawable.ic_filled_heart
+                        )
+                    else
+                        rememberAsyncImagePainter(R.drawable.ic_heart),
+
                     contentDescription = "favorite",
                     modifier = Modifier
                         .clickable {
                             coroutineScope.launch {
+                                if (isFavoriteSelected) {
                                     viewModel.addToMyWatchlist(movieItem)
+                                }else{
+                                    movieItem?.let { viewModel.removeFromFavorite(it) }
+                                }
                             }
+                            isFavoriteSelected = !isFavoriteSelected
+
                         },
                     tint = LightGreen
                 )

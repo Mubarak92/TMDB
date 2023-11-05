@@ -53,8 +53,8 @@ fun BottomBar(
                             }?.destination
                         if (firstBottomBarDestination != null) {
                             popUpTo(firstBottomBarDestination.id) {
-                                inclusive = true
-                                saveState = true
+                                inclusive = false
+                                saveState = false
                             }
                         }
                         launchSingleTop = true

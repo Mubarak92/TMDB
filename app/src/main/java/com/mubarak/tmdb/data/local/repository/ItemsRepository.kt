@@ -19,28 +19,10 @@ package com.mubarak.tmdb.data.local.repository
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 import kotlinx.coroutines.flow.Flow
 
-/**
- * Repository that provides insert, update, delete, and retrieve of [Item] from a given data source.
- */
 interface ItemsRepository {
-    /**
-     * Retrieve all the items from the the given data source.
-     */
     fun getAllItemsStream(): Flow<List<MovieItem>>
-
-    /**
-     * Retrieve an item from the given data source that matches with the [id].
-     */
     fun getItemStream(id: Int): Flow<MovieItem?>
-
-    /**
-     * Insert item in the data source
-     */
+    fun isExists(id: Int): Flow<Boolean>
     suspend fun insertItem(item: MovieItem?)
-
-    /**
-     * Delete item from the data source
-     */
     suspend fun deleteItem(item: MovieItem)
-
 }

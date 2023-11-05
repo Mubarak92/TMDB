@@ -44,8 +44,6 @@ fun FavoriteScreen(
         verticalArrangement = Arrangement.Center
     ) {
 
-
-
         if (favoriteUiState.itemList.isNotEmpty()) {
 
             LazyVerticalGrid(
@@ -57,11 +55,11 @@ fun FavoriteScreen(
                                 onDismissRequest = { openAlertDialog.value = false },
                                 onConfirmation = {
                                     openAlertDialog.value = false
-                                    viewModel.removeFromFavorite(item)
                                 },
-                                dialogTitle = "Delete",
+                                dialogTitle = "Delete?",
                                 dialogText = "Are you sure you want to delete ( ${item.title} ) from your favorites?",
-                                icon = Icons.Default.Info
+                                icon = Icons.Default.Info,
+                                movieItem = item
                             )
                         }
                         MovieCard(

@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant.BASE_POSTER_URL
@@ -70,4 +71,13 @@ fun MovieCard(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun MovieCardPreview(){
+    MovieCard(
+        movieTitle = "Movie",
+        posterPath = null
+    )
 }

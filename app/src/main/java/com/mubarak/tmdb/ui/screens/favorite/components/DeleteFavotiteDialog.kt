@@ -6,6 +6,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.mubarak.tmdb.domain.model.movieModel.MovieItem
+import com.mubarak.tmdb.ui.screens.favorite.FavoriteViewModel
 
 @Composable
 fun DeleteDialog(
@@ -14,7 +17,9 @@ fun DeleteDialog(
     dialogTitle: String,
     dialogText: String,
     icon: ImageVector,
-) {
+    movieItem : MovieItem,
+    viewModel: FavoriteViewModel = hiltViewModel(),
+    ) {
     AlertDialog(
         icon = {
             Icon(icon, contentDescription = "Example Icon")
@@ -31,6 +36,7 @@ fun DeleteDialog(
         confirmButton = {
             TextButton(
                 onClick = {
+                    viewModel.removeFromFavorite(movieItem)
                     onConfirmation()
                 }
             ) {
