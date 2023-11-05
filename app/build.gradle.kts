@@ -93,6 +93,7 @@ dependencies {
     implementation ("com.google.android.material:material:1.9.0")
     implementation ("androidx.compose.material3:material3:1.1.1")
     implementation ("androidx.compose.material3:material3-window-size-class:1.1.1")
+    implementation ("androidx.compose.material:material-icons-extended:1.5.4")
 
     //splash
     implementation ("androidx.core:core-splashscreen:1.0.1")
