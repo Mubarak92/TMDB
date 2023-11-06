@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.details
+package com.mubarak.tmdb.ui.screens.dashboard.movies.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,25 +21,28 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailsViewModel @Inject constructor(
+class MoviesDetailsViewModel @Inject constructor(
     private val detailsRepository: IDetailsRepository,
     private val itemsRepository: ItemsRepository,
     private val appPrefs: IAppPrefs
 ) : ViewModel() {
 
-    private val _viewState = MutableStateFlow<DetailsScreenViewState?>(null)
+    private val _viewState = MutableStateFlow<MoviesDetailsScreenViewState?>(null)
     val viewState = _viewState.asStateFlow()
+
+    private val _itemViewState = MutableStateFlow(false)
+    val itemViewState = _itemViewState.asStateFlow()
 
     fun getMovieDetails(
         movieId: Int?
     ) {
         detailsRepository.getDetails(appPrefs.locale, movieId)
-            .onStart { _viewState.emit(DetailsScreenViewState(isLoading = true)) }
+            .onStart { _viewState.emit(MoviesDetailsScreenViewState(isLoading = true)) }
             .map { it.toUiDetails() }
-            .onEach { _viewState.emit(DetailsScreenViewState(data = it)) }
+            .onEach { _viewState.emit(MoviesDetailsScreenViewState(data = it)) }
             .catch {
                 _viewState.emit(
-                    DetailsScreenViewState(
+                    MoviesDetailsScreenViewState(
                         error = _viewState.value?.error ?: throw Exception()
                     )
                 )
@@ -51,5 +54,16 @@ class DetailsViewModel @Inject constructor(
     fun addToMyWatchlist(movie: MovieItem?) = viewModelScope.launch(Dispatchers.IO) {
         itemsRepository.insertItem(movie)
     }
+
+    fun removeFromFavorite(movie: MovieItem) = viewModelScope.launch(Dispatchers.IO) {
+        itemsRepository.deleteItem(movie)
+    }
+
+    fun checkIfItemIsExists(movie: MovieItem) = itemsRepository.isExists(movie.id)
+        .onEach {
+            _itemViewState.emit(it)
+        }.flowOn(Dispatchers.IO)
+        .launchIn(viewModelScope)
+
 
 }

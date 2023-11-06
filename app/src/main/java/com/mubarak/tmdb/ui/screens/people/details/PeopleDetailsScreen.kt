@@ -39,7 +39,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.R
 import com.mubarak.tmdb.data.network.Constant
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MovieCard
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.components.MovieCard
 import com.mubarak.tmdb.ui.screens.people.component.AlsoKnownAsItem
 import com.mubarak.tmdb.ui.screens.people.component.PeopleImages
 import com.ramcosta.composedestinations.annotation.Destination

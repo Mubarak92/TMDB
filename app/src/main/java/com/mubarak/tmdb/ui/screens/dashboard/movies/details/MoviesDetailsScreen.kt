@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.details
+package com.mubarak.tmdb.ui.screens.dashboard.movies.details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,17 +9,17 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
-import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsCard
-import com.mubarak.tmdb.ui.screens.dashboard.details.components.DetailsTopBar
+import com.mubarak.tmdb.ui.screens.dashboard.movies.details.components.DetailsCard
+import com.mubarak.tmdb.ui.screens.dashboard.movies.details.components.DetailsTopBar
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlin.math.roundToInt
 
 @Destination
 @Composable
-fun DetailsScreen(
+fun MoviesDetailsScreen(
     movieItem: MovieItem,
-    viewModel: DetailsViewModel = hiltViewModel(),
+    viewModel: MoviesDetailsViewModel = hiltViewModel(),
     navigator: DestinationsNavigator
 ) {
 
@@ -35,7 +35,6 @@ fun DetailsScreen(
 
         Column(modifier = Modifier.fillMaxSize()) {
             val voteAverage = (state?.data?.voteAverage?.times(10))?.roundToInt()?.toFloat()
-
 
             DetailsCard(
                 posterPath = state?.data?.posterPath,

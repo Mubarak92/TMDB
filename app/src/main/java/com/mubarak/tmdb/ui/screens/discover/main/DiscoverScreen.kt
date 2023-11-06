@@ -13,7 +13,6 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun DiscoverScreen(
     navigator: DestinationsNavigator,
-
     ) {
 
     val list = listOf(
@@ -33,7 +32,7 @@ fun DiscoverScreen(
         (DiscoverListItems(stringResource(id = R.string.romance), 10749)),
         (DiscoverListItems(stringResource(id = R.string.science_fiction), 878)),
         (DiscoverListItems(stringResource(id = R.string.thriller), 53)),
-        (DiscoverListItems(stringResource(id = R.string.war), 37)),
+        (DiscoverListItems(stringResource(id = R.string.war), 37))
     )
 
     LazyColumn(content = {

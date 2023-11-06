@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.mainScreen
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main
 
 import com.mubarak.tmdb.domain.model.movieModel.MovieItem
 

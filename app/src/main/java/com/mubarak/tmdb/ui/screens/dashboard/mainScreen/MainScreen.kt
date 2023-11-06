@@ -8,7 +8,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.mubarak.tmdb.ui.commen.TopBar
-import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.TabRowComponent
+import com.mubarak.tmdb.ui.screens.dashboard.movies.main.components.TabRowComponent
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator

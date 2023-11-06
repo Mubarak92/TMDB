@@ -1,4 +1,4 @@
-package com.mubarak.tmdb.ui.screens.dashboard.mainScreen
+package com.mubarak.tmdb.ui.screens.dashboard.movies.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,8 +23,6 @@ class MoviesListViewModel @Inject constructor(
     private val appPrefs: IAppPrefs
 ) : ViewModel() {
 
-    var currentType = "movie"
-
     private val _viewState = MutableStateFlow<MovieListViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
@@ -32,8 +30,8 @@ class MoviesListViewModel @Inject constructor(
         getMovieList()
     }
 
-    fun getMovieList(
-        pathType: String = currentType
+    private fun getMovieList(
+        pathType: String = "movie"
     ) {
         movieRepository.getTrendingNow(appPrefs.locale, pathType)
             .onStart { _viewState.emit(MovieListViewState(isLoading = true)) }

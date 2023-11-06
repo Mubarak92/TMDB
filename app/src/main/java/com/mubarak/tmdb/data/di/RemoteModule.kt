@@ -4,8 +4,10 @@ import com.mubarak.tmdb.data.network.remote.implementation.DetailsRemoteImpl
 import com.mubarak.tmdb.data.network.remote.IDetailsRemote
 import com.mubarak.tmdb.data.network.remote.IMovieRemote
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
+import com.mubarak.tmdb.data.network.remote.ITvShowsRemote
 import com.mubarak.tmdb.data.network.remote.implementation.MovieRemoteImpl
 import com.mubarak.tmdb.data.network.remote.implementation.PeopleRemoteImpl
+import com.mubarak.tmdb.data.network.remote.implementation.TvShowsRemoteImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -23,4 +25,7 @@ abstract class RemoteModule {
 
     @Binds
     abstract fun bindPeopleRemote(peopleRemoteImpl: PeopleRemoteImpl): IPeopleRemote
+
+    @Binds
+    abstract fun bindTvShowsRemote(tvShowsRemoteImpl: TvShowsRemoteImpl): ITvShowsRemote
 }

@@ -90,6 +90,7 @@ class PeopleDetailsViewModel @Inject constructor(
             .flowOn(Dispatchers.IO)
             .launchIn(viewModelScope)
     }
+
     fun getPersonSocialMedia(
         personId: Int
     ) {
