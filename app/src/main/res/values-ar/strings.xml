@@ -28,4 +28,8 @@
     <string name="science_fiction">خيال علمي</string>
     <string name="thriller">غموض</string>
     <string name="war">حرب</string>
+
+    <string name="trending_now">مشهور الان</string>
+    <string name="whats_new">ماهو الجديد</string>
+
 </resources>

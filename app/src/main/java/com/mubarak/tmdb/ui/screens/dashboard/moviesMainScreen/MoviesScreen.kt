@@ -7,8 +7,10 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mubarak.tmdb.R
 import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.MoviesListViewModel
 import com.mubarak.tmdb.ui.screens.dashboard.mainScreen.components.MainMovieListLazyRow
 import com.ramcosta.composedestinations.annotation.Destination
@@ -25,7 +27,7 @@ fun MoviesScreen(
     Column(modifier = Modifier
         .fillMaxSize()
         .verticalScroll(rememberScrollState())) {
-        MainMovieListLazyRow(state, navigator, "Trending Now", false)
-        MainMovieListLazyRow(state, navigator, "What's New", true)
+        MainMovieListLazyRow(state, navigator, stringResource(id = R.string.trending_now), false)
+        MainMovieListLazyRow(state, navigator, stringResource(id = R.string.whats_new), true)
     }
 }
