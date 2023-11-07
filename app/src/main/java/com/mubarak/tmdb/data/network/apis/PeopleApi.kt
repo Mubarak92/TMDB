@@ -17,7 +17,7 @@ interface PeopleApi {
         @Query("api_key") apiKey: String = Constant.API_KEY,
         @Query("language") language: String?,
         @Query("page") page: Int,
-        @Query("total_result1s") totalPages: Int
+        @Query("total_results") totalPages: Int
     ): ApiPeopleModelResponse
 
     @GET("3/person/{person_id}")

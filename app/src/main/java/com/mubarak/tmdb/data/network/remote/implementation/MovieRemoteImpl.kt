@@ -21,11 +21,6 @@ class MovieRemoteImpl @Inject constructor(
             emit(api.getPopularMovies(pageNumber, genres = genres, language = language))
         }
 
-    override fun getSearchedMovies(pageNumber: Int, query: String?): Flow<ApiMovieModelResponse> =
-        flow {
-            emit(api.searchMovies(pageNumber = pageNumber, query = query))
-        }
-
     override fun getTrendingNow(language: String,pathType:String): Flow<ApiMovieModelResponse> = flow {
         emit(api.trendingNow(language = language, pathType = pathType))
     }
