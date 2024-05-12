@@ -5,10 +5,12 @@ import com.mubarak.tmdb.data.local.repository.OfflineItemsRepository
 import com.mubarak.tmdb.domain.implementation.DetailsRepositoryImpl
 import com.mubarak.tmdb.domain.implementation.MovieRepositoryImpl
 import com.mubarak.tmdb.domain.implementation.PeopleRepositoryImpl
+import com.mubarak.tmdb.domain.implementation.SearchRepositoryImpl
 import com.mubarak.tmdb.domain.implementation.TvShowsRepositoryImpl
 import com.mubarak.tmdb.domain.repository.IDetailsRepository
 import com.mubarak.tmdb.domain.repository.IMovieRepository
 import com.mubarak.tmdb.domain.repository.IPeopleRepository
+import com.mubarak.tmdb.domain.repository.ISearchRepository
 import com.mubarak.tmdb.domain.repository.ITvShowsRepository
 import dagger.Binds
 import dagger.Module
@@ -32,5 +34,8 @@ abstract class RepositoryModule {
     abstract fun bindOfflineRepository(offlineItemsRepository: OfflineItemsRepository): ItemsRepository
 
     @Binds
-    abstract fun binTvShowsRepository(tvShowsRepositoryImpl: TvShowsRepositoryImpl):ITvShowsRepository
+    abstract fun bindTvShowsRepository(tvShowsRepositoryImpl: TvShowsRepositoryImpl): ITvShowsRepository
+
+    @Binds
+    abstract fun bindSearchRepository(searchRepositoryImpl: SearchRepositoryImpl): ISearchRepository
 }

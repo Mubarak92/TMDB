@@ -16,13 +16,6 @@ interface MoviesApi {
         @Query("language") language: String
     ): ApiMovieModelResponse
 
-    @GET("3/movie/search")
-    suspend fun searchMovies(
-        @Query("page_number") pageNumber: Int = 1,
-        @Query("query") query: String?
-    ): ApiMovieModelResponse
-
-
     @GET("3/trending/{pathType}/week")
     suspend fun trendingNow(
         @Path("pathType") pathType: String,

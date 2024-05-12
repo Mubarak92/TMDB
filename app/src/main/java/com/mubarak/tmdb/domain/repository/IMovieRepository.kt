@@ -6,7 +6,6 @@ import kotlinx.coroutines.flow.Flow
 interface IMovieRepository {
 
     fun getPopularMovies(pageNumber: Int, genres: Int,language: String): Flow<ApiMovieModelResponse>
-    fun getSearchedMovies(pageNumber: Int, query: String?): Flow<ApiMovieModelResponse>
     fun getTrendingNow(language: String, pathType: String): Flow<ApiMovieModelResponse>
 
 }

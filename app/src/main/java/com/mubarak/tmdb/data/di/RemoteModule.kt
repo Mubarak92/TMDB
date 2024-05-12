@@ -4,9 +4,11 @@ import com.mubarak.tmdb.data.network.remote.implementation.DetailsRemoteImpl
 import com.mubarak.tmdb.data.network.remote.IDetailsRemote
 import com.mubarak.tmdb.data.network.remote.IMovieRemote
 import com.mubarak.tmdb.data.network.remote.IPeopleRemote
+import com.mubarak.tmdb.data.network.remote.ISearchRemote
 import com.mubarak.tmdb.data.network.remote.ITvShowsRemote
 import com.mubarak.tmdb.data.network.remote.implementation.MovieRemoteImpl
 import com.mubarak.tmdb.data.network.remote.implementation.PeopleRemoteImpl
+import com.mubarak.tmdb.data.network.remote.implementation.SearchRemoteImpl
 import com.mubarak.tmdb.data.network.remote.implementation.TvShowsRemoteImpl
 import dagger.Binds
 import dagger.Module
@@ -28,4 +30,7 @@ abstract class RemoteModule {
 
     @Binds
     abstract fun bindTvShowsRemote(tvShowsRemoteImpl: TvShowsRemoteImpl): ITvShowsRemote
+
+    @Binds
+    abstract fun bindSearchRemote(searchRemoteImpl: SearchRemoteImpl): ISearchRemote
 }

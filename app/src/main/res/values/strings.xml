@@ -27,4 +27,7 @@
     <string name="science_fiction">Science Fiction</string>
     <string name="thriller">Thriller</string>
     <string name="war">War</string>
+
+    <string name="trending_now">Trending Now</string>
+    <string name="whats_new">What\'s New</string>
 </resources>

@@ -149,6 +149,7 @@ dependencies {
     implementation ("com.github.skydoves:landscapist-palette:2.2.6")
     implementation ("com.github.skydoves:landscapist-transformation:2.2.6")
     implementation ("com.github.skydoves:landscapist-animation:2.2.6")
+    implementation ("com.github.skydoves:landscapist-placeholder:2.2.6")
 
     // Paging
     implementation ("androidx.paging:paging-runtime-ktx:3.2.0")
@@ -156,5 +157,8 @@ dependencies {
 
     //accompanist
     implementation ("com.google.accompanist:accompanist-systemuicontroller:0.30.0")
+
+    //lottie
+    implementation ("com.airbnb.android:lottie-compose:6.1.0")
 
 }
