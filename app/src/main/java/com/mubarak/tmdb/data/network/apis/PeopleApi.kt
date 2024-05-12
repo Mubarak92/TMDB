@@ -17,7 +17,8 @@ interface PeopleApi {
         @Query("api_key") apiKey: String = Constant.API_KEY,
         @Query("language") language: String?,
         @Query("page") page: Int,
-        @Query("total_result1s") totalPages: Int
+        @Query("total_pages") totalPages: Int,
+        @Query("total_results") totalResults: Int
     ): ApiPeopleModelResponse
 
     @GET("3/person/{person_id}")
@@ -26,7 +27,6 @@ interface PeopleApi {
         @Query("api_key") apiKey: String = Constant.API_KEY,
         @Query("language") language: String?,
     ): ApiPeopleDetailsModelResponse
-
 
     @GET("3/person/{person_id}/images")
     suspend fun peopleImages(
@@ -45,5 +45,4 @@ interface PeopleApi {
         @Path("person_id") personId: Int,
         @Query("api_key") apiKey: String = Constant.API_KEY,
     ): ApiPeopleSocial
-
 }

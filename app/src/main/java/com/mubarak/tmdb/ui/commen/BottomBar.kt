@@ -35,7 +35,7 @@ fun BottomBar(
     val currentDestination: Destination = navController.appCurrentDestinationAsState().value
         ?: NavGraphs.root.startAppDestination
 
-    NavigationBar () {
+    NavigationBar {
         BottomBarDestination.values().forEach { destination ->
             NavigationBarItem(
                 selected = currentDestination == destination.direction,
@@ -45,7 +45,7 @@ fun BottomBar(
                         val navigationRoutes = BottomBarDestination.values()
 
                         val firstBottomBarDestination =
-                            navController.currentBackStack.value.firstOrNull() { navBackStackEntry ->
+                            navController.currentBackStack.value.firstOrNull { navBackStackEntry ->
                                 checkForDestinations(
                                     navigationRoutes,
                                     navBackStackEntry

@@ -12,7 +12,8 @@ interface IPeopleRemote {
     fun getTrendingPeople(
         language: String,
         page: Int,
-        totalPages: Int
+        totalPages: Int,
+        totalResults: Int
     ): Flow<ApiPeopleModelResponse>
 
     fun getPeopleDetails(

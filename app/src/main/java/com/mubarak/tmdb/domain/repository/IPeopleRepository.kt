@@ -12,7 +12,8 @@ interface IPeopleRepository {
     fun getTrendingPeople(
         language: String,
         page: Int,
-        totalPages: Int
+        totalPages: Int,
+        totalResult:Int
     ): Flow<ApiPeopleModelResponse>
 
     fun getPeopleDetails(

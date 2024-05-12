@@ -17,10 +17,12 @@ class PeopleRepositoryImpl @Inject constructor(private val peopleRemote: IPeople
     IPeopleRepository {
 
     override fun getTrendingPeople(
-        language: String, page: Int,
-        totalPages: Int
+        language: String,
+        page: Int,
+        totalPages: Int,
+        totalResult:Int
     ): Flow<ApiPeopleModelResponse> =
-        peopleRemote.getTrendingPeople(language = language, page = page, totalPages = totalPages)
+        peopleRemote.getTrendingPeople(language = language, page = page, totalPages = totalPages,totalResults= totalResult)
 
     override fun getPeopleDetails(
         personId: Int,

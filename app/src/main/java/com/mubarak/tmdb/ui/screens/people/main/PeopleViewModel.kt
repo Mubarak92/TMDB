@@ -21,21 +21,25 @@ import javax.inject.Inject
 class PeopleViewModel @Inject constructor(
     private val peopleRepository: IPeopleRepository,
     private val appPrefs: IAppPrefs
-) :
-    ViewModel() {
+) : ViewModel() {
+
+    private var currentPage = 1
 
     private val _viewState = MutableStateFlow<PeopleViewState?>(null)
     val viewState = _viewState.asStateFlow()
 
-    init {
-        getTrendingPeople()
-    }
-
     private fun getTrendingPeople() {
-        peopleRepository.getTrendingPeople(appPrefs.locale, page = 1, totalPages = 10)
-            .onStart { _viewState.emit(PeopleViewState(isLoading = true)) }
-            .map { it.toUiPeopleList() }
-            .onEach { _viewState.emit(PeopleViewState(data = it)) }
+        peopleRepository.getTrendingPeople(appPrefs.locale, page = currentPage, totalPages = 1000, totalResult = 1000)
+            .onStart {
+                if (_viewState.value == null || _viewState.value?.data.isNullOrEmpty()) {
+                    _viewState.emit(PeopleViewState(isLoading = true))
+                }
+            }
+            .map {
+                val newData = it.toUiPeopleList()
+                val currentData = _viewState.value?.data ?: emptyList()
+                PeopleViewState(data = currentData + newData)
+            }
             .catch {
                 _viewState.emit(
                     PeopleViewState(
@@ -43,7 +47,20 @@ class PeopleViewModel @Inject constructor(
                     )
                 )
             }
-                .flowOn(Dispatchers.IO)
-                .launchIn(viewModelScope)
+            .flowOn(Dispatchers.IO)
+            .onEach { _viewState.emit(it) }
+            .launchIn(viewModelScope)
+    }
+
+    fun getTrendingPeopleCounter(pageNumber: Int = 1) {
+        currentPage = pageNumber
+        getTrendingPeople()
+    }
+
+    fun loadMoreData() {
+        if (currentPage < 10) {
+            currentPage++
+            getTrendingPeople()
         }
+    }
 }

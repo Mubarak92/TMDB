@@ -5,5 +5,5 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DiscoverViewModel @Inject constructor() : ViewModel() {}
+class DiscoverViewModel @Inject constructor() : ViewModel()
 data class DiscoverListItems(val name: String, val id: Int)
